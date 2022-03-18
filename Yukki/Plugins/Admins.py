@@ -86,7 +86,7 @@ async def admins(_, message: Message):
         )
     if message.command[0][1] == "e":
         if await is_music_playing(message.chat.id):
-            return await message.reply_text(("Musiqi artıq ifa olunur.")
+            return await message.reply_text("Musiqi artıq ifa olunur.")
         await music_on(chat_id)
         await resume_stream(chat_id)
         await message.reply_text(
