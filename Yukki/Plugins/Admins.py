@@ -53,7 +53,7 @@ __HELP__ = """
 
 
 **Qeyd:**
- Yalnız Sudo İstifadəçiləri üçün
+ - Yalnız Sudo İstifadəçiləri üçün
 
 /activevc
 - Botda aktiv səsli söhbətləri yoxlayın.
