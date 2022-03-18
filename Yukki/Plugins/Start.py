@@ -133,7 +133,7 @@ async def okaybhai(_, CallbackQuery):
     await CallbackQuery.answer("Geri qayıt...")
     out = start_pannel()
     await CallbackQuery.edit_message_text(
-        text=f"Məni {CallbackQuery.message.chat.title}-də olduğunuz üçün təşəkkür edirəm.\n{MUSIC_BOT_NAME}yaşayır.\n\nHər hansı yardım üçün dəstək qrupumuzu və kanalımızı yoxlayın.",
+        text=f"Məni {CallbackQuery.message.chat.title}-çatınıza əlavə etdiyiniz üçün təşəkkür edirəm🥰.\n{MUSIC_BOT_NAME}Mən işləyirəm.\n\nSöhbət Qrupumuz @AlmondEyessChat.",
         reply_markup=InlineKeyboardMarkup(out[1]),
     )
 
