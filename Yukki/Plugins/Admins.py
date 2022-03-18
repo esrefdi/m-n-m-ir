@@ -32,34 +32,34 @@ from Yukki.Utilities.youtube import get_m3u8, get_yt_info_id
 loop = asyncio.get_event_loop()
 
 
-__MODULE__ = "Voice Chat"
+__MODULE__ = "Səsli söhbət"
 __HELP__ = """
 
 
 /pause
-- Pause the playing music on voice chat.
+- Səsli söhbətdə oxunan musiqini dayandırın.
 
 /resume
-- Resume the paused music on voice chat.
+- Səsli söhbətdə dayandırılmış musiqini davam etdirin.
 
 /skip
-- Skip the current playing music on voice chat
+- Səsli söhbətdə cari oxunan musiqini atlayın
 
 /end or /stop
-- Stop the playout.
+-  Səsli söhbəti  dayandırın.
 
 /queue
-- Check queue list.
+- Növbə siyahısını yoxlayın.
 
 
-**Note:**
-Only for Sudo Users
+**Qeyd:**
+ Yalnız Sudo İstifadəçiləri üçün
 
 /activevc
-- Check active voice chats on bot.
+- Botda aktiv səsli söhbətləri yoxlayın.
 
 /activevideo
-- Check active video calls on bot.
+- Botda aktiv video zəngləri yoxlayın.
 """
 
 
@@ -72,25 +72,25 @@ Only for Sudo Users
 async def admins(_, message: Message):
     global get_queue
     if not len(message.command) == 1:
-        return await message.reply_text("Error! Wrong Usage of Command.")
+        return await message.reply_text("Xəta! Komandanın Yanlış İstifadəsi.")
     if not await is_active_chat(message.chat.id):
-        return await message.reply_text("Nothing is playing on voice chat.")
+        return await message.reply_text("Səsli çatda heç nə oxunmur.")
     chat_id = message.chat.id
     if message.command[0][1] == "a":
         if not await is_music_playing(message.chat.id):
-            return await message.reply_text("Music is already Paused.")
+            return await message.reply_text("Musiqi artıq dayandırılıb.")
         await music_off(chat_id)
         await pause_stream(chat_id)
         await message.reply_text(
-            f"🎧 Voicechat Paused by {message.from_user.mention}!"
+            f"🎧 Səsli söhbət dayandırılıb {message.from_user.mention}!"
         )
     if message.command[0][1] == "e":
         if await is_music_playing(message.chat.id):
-            return await message.reply_text("Music is already Playing.")
+            return await message.reply_text(("Musiqi artıq ifa olunur.")
         await music_on(chat_id)
         await resume_stream(chat_id)
         await message.reply_text(
-            f"🎧 Voicechat Resumed by {message.from_user.mention}!"
+            f"🎧 Səsli söhbəti davam etdirdi {message.from_user.mention}!"
         )
     if message.command[0][1] == "t" or message.command[0][1] == "n":
         if message.chat.id not in db_mem:
@@ -105,7 +105,7 @@ async def admins(_, message: Message):
         await remove_active_video_chat(chat_id)
         await stop_stream(chat_id)
         await message.reply_text(
-            f"🎧 Voicechat End/Stopped by {message.from_user.mention}!"
+            f"🎧 Səsli söhbət Bitdi/Dayandırıldı {message.from_user.mention}!"
         )
     if message.command[0][1] == "k":
         if message.chat.id not in db_mem:
@@ -117,7 +117,7 @@ async def admins(_, message: Message):
             await remove_active_chat(chat_id)
             await remove_active_video_chat(chat_id)
             await message.reply_text(
-                "No more music in __Queue__ \n\nLeaving Voice Chat"
+                "__Queue__-da daha musiqi yoxdur \n\nSəsli Çatı tərk edirik"
             )
             await stop_stream(chat_id)
             return
