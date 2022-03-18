@@ -27,20 +27,20 @@ from Yukki.Utilities.ping import get_readable_time
 
 welcome_group = 2
 
-__MODULE__ = "Essentials"
+__MODULE__ = "Əsaslar"
 __HELP__ = """
 
 
 /start 
-- Start the Bot.
+- Botu başlat.
 
 
 /help 
-- Get Commands Helper Menu.
+- Əmrlər və parametrlər menyusuna daxil ol.
 
 
 /settings 
-- Get Settings button.
+- Parametrləri əldə edin.
 """
 
 
