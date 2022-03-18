@@ -46,7 +46,7 @@ async def play(_, message: Message):
         db_mem[message.chat.id] = {}
     if message.sender_chat:
         return await message.reply_text(
-            "You're an __Anonymous Admin__ in this Chat Group!\nRevert back to User Account From Admin Rights."
+            "Siz bu Çat Qrupunda __Anonim Admin__siniz!\nAdmin Hüquqlarından İstifadəçi Hesabına qayıdın."
         )
     audio = (
         (message.reply_to_message.audio or message.reply_to_message.voice)
@@ -61,13 +61,13 @@ async def play(_, message: Message):
     url = get_url(message)
     if audio:
         mystic = await message.reply_text(
-            "🔄 Processing Audio... Please Wait!"
+            "🔄 Audio emal olunur... Lütfən gözləyin!"
         )
         try:
             read = db_mem[message.chat.id]["live_check"]
             if read:
                 return await mystic.edit(
-                    "Live Streaming Playing...Stop it to play music"
+                    "Canlı yayım ifa olunur...Musiqi oynamaq üçün onu dayandırın"
                 )
             else:
                 pass
@@ -75,13 +75,13 @@ async def play(_, message: Message):
             pass
         if audio.file_size > 1073741824:
             return await mystic.edit_text(
-                "Audio File Size Should Be Less Than 150 mb"
+                "Audio Faylın Ölçüsü 150 mb-dən Az Olmalıdır"
             )
         duration_min = seconds_to_min(audio.duration)
         duration_sec = audio.duration
         if (audio.duration) > DURATION_LIMIT:
             return await mystic.edit_text(
-                f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
+                f"**Müddət Limiti keçdi**\n\n**İcazə verilən Müddət: **{DURATION_LIMIT_MIN} dəqiqə\n**Qəbul müddəti:** {duration_min} dəqiqə(s)"
             )
         file_name = (
             audio.file_unique_id
@@ -111,7 +111,7 @@ async def play(_, message: Message):
         limit = await get_video_limit(141414)
         if not limit:
             return await message.reply_text(
-                "**No Limit Defined for Video Calls**\n\nSet a Limit for Number of Maximum Video Calls allowed on Bot by /set_video_limit [Sudo Users Only]"
+                "**Video Zənglər üçün Limit Müəyyən edilməyib**\n\nBotda icazə verilən Maksimum Video Zənglərin Sayı üçün /set_video_limit [Yalnız Sudo İstifadəçiləri] ilə limit təyin edin"
             )
         count = len(await get_active_video_chats())
         if int(count) == int(limit):
@@ -119,16 +119,16 @@ async def play(_, message: Message):
                 pass
             else:
                 return await message.reply_text(
-                    "Sorry! Bot only allows limited number of video calls due to CPU overload issues. Many other chats are using video call right now. Try switching to audio or try again later"
+                    "Bağışlayın! Bot CPU-nun həddən artıq yüklənməsi ilə bağlı problemlərə görə yalnız məhdud sayda video zənglərə icazə verir. Bir çox digər çatlar hazırda video zəngdən istifadə edir. Audioya keçin və ya sonra yenidən cəhd edin"
                 )
         mystic = await message.reply_text(
-            "🔄 Processing Video... Please Wait!"
+            "🔄 Video emal olunur... Zəhmət olmasa gözləyin!"
         )
         try:
             read = db_mem[message.chat.id]["live_check"]
             if read:
                 return await mystic.edit(
-                    "Live Streaming Playing...Stop it to play music"
+                    "Canlı yayım ifa olunur...Musiqi oynamaq üçün onu dayandırın"
                 )
             else:
                 pass
@@ -142,7 +142,7 @@ async def play(_, message: Message):
             mystic,
         )
     elif url:
-        mystic = await message.reply_text("🔄 Processing URL... Please Wait!")
+        mystic = await message.reply_text("🔄 URL emal olunur... Lütfən gözləyin!")
         if not message.reply_to_message:
             query = message.text.split(None, 1)[1]
         else:
@@ -158,7 +158,7 @@ async def play(_, message: Message):
         buttons = url_markup2(videoid, duration_min, message.from_user.id)
         return await message.reply_photo(
             photo=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+            caption=f"📎Başlıq: **{title}\n\n⏳Müddət:** {duration_min} Dəqiqələr\n\n__[Video Haqqında Əlavə Məlumat Alın](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     else:
@@ -168,8 +168,7 @@ async def play(_, message: Message):
             )
             await message.reply_photo(
                 photo="Utils/Playlist.jpg",
-                caption=(
-                    "**Usage:** /play [Music Name or Youtube Link or Reply to Audio]\n\nIf you want to play Playlists! Select the one from Below."
+                caption=( "**İstifadə:** /play [Musiqi Adı və ya Youtube Linki və ya Audioya Cavab]\in\Çalğı siyahılarını oynamaq istəyirsinizsə! Aşağıdan birini seçin."
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
@@ -189,7 +188,7 @@ async def play(_, message: Message):
         )
         return await message.reply_photo(
             photo=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+            caption=f"📎Başlıq: **{title}\n\n⏳Müddət:** {duration_min} Dəqiqələr\n\n__[Video Haqqında Əlavə Məlumat Alın](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
 
@@ -202,7 +201,7 @@ async def Music_Stream(_, CallbackQuery):
         read1 = db_mem[CallbackQuery.message.chat.id]["live_check"]
         if read1:
             return await CallbackQuery.answer(
-                "Live Streaming Playing...Stop it to play music",
+                "Canlı Yayım Oynalır...Musiqi çalmaq üçün onu dayandırın",
                 show_alert=True,
             )
         else:
@@ -217,18 +216,18 @@ async def Music_Stream(_, CallbackQuery):
     if str(duration) == "None":
         buttons = livestream_markup("720", videoid, duration, user_id)
         return await CallbackQuery.edit_message_text(
-            "**Live Stream Detected**\n\nWant to play live stream? This will stop the current playing musics(if any) and will start streaming live video.",
+            "**Canlı Yayım Aşkarlandı**\in\Canlı yayımı oynamaq istəyirsiniz? Bu, cari ifa olunan musiqiləri (əgər varsa) dayandıracaq və canlı video yayımına başlayacaq.",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if CallbackQuery.from_user.id != int(user_id):
         return await CallbackQuery.answer(
-            "This is not for you! Search You Own Song.", show_alert=True
+            "Bu sizin üçün deyil! Öz Mahnınızı Axtarın.", show_alert=True
         )
     await CallbackQuery.message.delete()
     title, duration_min, duration_sec, thumbnail = get_yt_info_id(videoid)
     if duration_sec > DURATION_LIMIT:
         return await CallbackQuery.message.reply_text(
-            f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
+            f"**Müddət Limiti keçdi**\n\n**İcazə verilən Müddət: **{DURATION_LIMIT_MIN} dəqiqə\n**Qəbul müddəti:** {duration_min} dəqiqə(s)"
         )
     await CallbackQuery.answer(f"Processing:- {title[:20]}", show_alert=True)
     mystic = await CallbackQuery.message.reply_text(
