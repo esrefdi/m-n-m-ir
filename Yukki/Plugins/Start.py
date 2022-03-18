@@ -189,13 +189,13 @@ async def AMS(_, CallbackQuery):
     is_non_admin = await is_nonadmin_chat(chat_id)
     if not is_non_admin:
         await CallbackQuery.answer(
-            "Commands Mode is Already Set To ADMINS ONLY", show_alert=True
+            "Əmrlər Rejimi Artıq YALNIZ ADMINLƏR üçün təyin edilib", show_alert=True
         )
     else:
         await CallbackQuery.answer("Changes Saved")
         await remove_nonadmin_chat(chat_id)
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\nSet Commands Mode to **Admins**\n\nNow only Admins present in this group can skip, pause, resume, stop musics.\n\nChanges Done By @{checking}",
+            text=f"{text}\n\nƏmr rejimini **Adminlər** olaraq təyin edin\n\nİndi yalnız bu qrupda olan Adminlər musiqiləri ötürə, dayandıra, davam etdirə və dayandıra bilər.\n\nDəyişikliklər @{checking} tərəfindən edildi"  ,
             reply_markup=InlineKeyboardMarkup(buttons),
         )
 
