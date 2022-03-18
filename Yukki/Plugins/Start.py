@@ -99,7 +99,7 @@ async def useradd(_, message: Message):
     await asyncio.gather(
         message.delete(),
         message.reply_text(
-            f"Məni {message.chat.title}-də olduğunuz üçün təşəkkür edirəm.\n{MUSIC_BOT_NAME} sağdır.\n\nHər hansı yardım və ya yardım üçün dəstək qrupumuzu və kanalımızı yoxlayın.",
+            f"Məni {message.chat.title}-çatınıza əlavə etdiyiniz üçün təşəkkür edirəm.\n{MUSIC_BOT_NAME} Mən işləyirəm.\n\nSöhbət Qrupumuz @AlmondEyessChat.",
             reply_markup=InlineKeyboardMarkup(out[1]),
         ),
     )
