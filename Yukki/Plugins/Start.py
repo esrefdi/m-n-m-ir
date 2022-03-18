@@ -211,7 +211,7 @@ async def start_markup_check(_, CallbackQuery):
     c_id = CallbackQuery.message.chat.id
     chat_id = CallbackQuery.message.chat.id
     if command == "AQ":
-        await CallbackQuery.answer("Already in Best Quality", show_alert=True)
+        await CallbackQuery.answer("Artıq ən yaxşı keyfiyyətdə",show_alert=True)
     if command == "AV":
         await CallbackQuery.answer("Bot Parametrləri ...")
         text, buttons = volmarkup()
@@ -234,7 +234,7 @@ async def start_markup_check(_, CallbackQuery):
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "Dashboard":
-        await CallbackQuery.answer("Dashboard...")
+        await CallbackQuery.answer("İdarə paneli...")
         text, buttons = dashmarkup()
         _check = await get_start(c_id, "assistant")
         volume = _check["volume"]
