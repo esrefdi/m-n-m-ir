@@ -122,7 +122,7 @@ async def settings(_, message: Message):
     await asyncio.gather(
         message.delete(),
         message.reply_text(
-            f"{text}\n\n**Group:** {message.chat.title}\n**Group ID:** {message.chat.id}\n**Volume Level:** {volume}%",
+            f"{text}\n\n**Qrup:** {message.chat.title}\n**Grup ID si:** {message.chat.id}\n**Səs Səviyyəsi:** {volume}%",
             reply_markup=InlineKeyboardMarkup(buttons),
         ),
     )
@@ -130,10 +130,10 @@ async def settings(_, message: Message):
 
 @app.on_callback_query(filters.regex("okaybhai"))
 async def okaybhai(_, CallbackQuery):
-    await CallbackQuery.answer("Going Back ...")
+    await CallbackQuery.answer("Geri qayıt...")
     out = start_pannel()
     await CallbackQuery.edit_message_text(
-        text=f"Thanks for having me in {CallbackQuery.message.chat.title}.\n{MUSIC_BOT_NAME}is alive.\n\nFor any assistance or help, checkout our support group and channel.",
+        text=f"Məni {CallbackQuery.message.chat.title}-də olduğunuz üçün təşəkkür edirəm.\n{MUSIC_BOT_NAME}yaşayır.\n\nHər hansı yardım üçün dəstək qrupumuzu və kanalımızı yoxlayın.",
         reply_markup=InlineKeyboardMarkup(out[1]),
     )
 
