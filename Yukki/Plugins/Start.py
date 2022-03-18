@@ -82,12 +82,11 @@ async def welcome(_, message: Message):
                 return await remove_active_chat(chat_id)
             if member.id in OWNER_ID:
                 return await message.reply_text(
-                    f"{MUSIC_BOT_NAME}'s Owner[{member.mention}] has just joined your chat."
+                    f"{MUSIC_BOT_NAME}'s Sahibi❤️[{member.mention}] indicə söhbətinizə qoşulub🥰."
                 )
             if member.id in SUDOERS:
                 return await message.reply_text(
-                    f"A member of {MUSIC_BOT_NAME}'s Sudo User[{member.mention}] has just joined your chat."
-                )
+                    f"{MUSIC_BOT_NAME}-nin Sudo İstifadəçisinin[{member.mention}] üzvü indicə söhbətinizə qoşuldu.😎")
             return
         except:
             return
