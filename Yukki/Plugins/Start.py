@@ -213,7 +213,7 @@ async def start_markup_check(_, CallbackQuery):
     if command == "AQ":
         await CallbackQuery.answer("Already in Best Quality", show_alert=True)
     if command == "AV":
-        await CallbackQuery.answer("Bot Settings ...")
+        await CallbackQuery.answer("Bot Parametrləri ...")
         text, buttons = volmarkup()
         _check = await get_start(c_id, "assistant")
         volume = _check["volume"]
