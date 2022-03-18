@@ -56,8 +56,7 @@ async def welcome(_, message: Message):
             if member.id == BOT_ID:
                 if chat_id in await blacklisted_chats():
                     await message.reply_text(
-                        f"Hushh, Your chat group[{message.chat.title}] has been blacklisted!\n\nAsk any Sudo User to whitelist your chat"
-                    )
+                        f"Hushh, söhbət qrupunuz[{message.chat.title}] qara siyahıya salınıb!\n\nHər hansı Sudo İstifadəçisindən söhbətinizi ağ siyahıya salmasını xahiş edin")
                     return await app.leave_chat(chat_id)
                 _assistant = await get_assistant(message.chat.id, "assistant")
                 if not _assistant:
