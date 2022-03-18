@@ -218,11 +218,11 @@ async def start_markup_check(_, CallbackQuery):
         _check = await get_start(c_id, "assistant")
         volume = _check["volume"]
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+            text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {volume}%\n**Audio Keyfiyyəti:** Defolt Ən Yaxşı",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "AU":
-        await CallbackQuery.answer("Bot Settings ...")
+        await CallbackQuery.answer("Bot Parametrləri ...")
         text, buttons = usermarkup()
         is_non_admin = await is_nonadmin_chat(chat_id)
         if not is_non_admin:
@@ -230,7 +230,7 @@ async def start_markup_check(_, CallbackQuery):
         else:
             current = "Everyone"
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n\nCurrently Who Can Use {MUSIC_BOT_NAME}:- **{current}**\n\n**⁉️ What is This?**\n\n**👥 Everyone :-**Anyone can use {MUSIC_BOT_NAME}'s commands(skip, pause, resume etc) present in this group.\n\n**🙍 Admin Only :-**  Only the admins and authorized users can use all commands of {MUSIC_BOT_NAME}.",
+            text=f"{text}\n\n**Qrup:** {c_title}\n\nHazırda Kimlər {MUSIC_BOT_NAME} istifadə edə bilər:- **{current}**\n\n**⁉️ Bu nədir?  **\n\n**👥 Hər kəs :-**Hər kəs {MUSIC_BOT_NAME}-nin bu qrupda mövcud olan əmrlərindən (keç, pauza, davam etdir və s.) istifadə edə bilər.\n\n**🙍 Yalnız Admin :-** Yalnız  adminlər və səlahiyyətli istifadəçilər {MUSIC_BOT_NAME} proqramının bütün əmrlərindən istifadə edə bilərlər.",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "Dashboard":
@@ -239,7 +239,7 @@ async def start_markup_check(_, CallbackQuery):
         _check = await get_start(c_id, "assistant")
         volume = _check["volume"]
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n\nCheck {MUSIC_BOT_NAME}'s System Stats In the DashBoard Here! More Functions adding very soon! Keep on Checking Support Channel.",
+            text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {həcmi}%\n\nYoxlayın {  MUSIC_BOT_NAME}-nin Sistem Statistikası Burada İdarə Panelində! Daha çox funksiyalar tezliklə əlavə olunacaq! Dəstək Kanalını Yoxlamağa davam edin.",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "Custommarkup":
