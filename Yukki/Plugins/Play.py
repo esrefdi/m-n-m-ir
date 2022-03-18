@@ -232,7 +232,7 @@ async def Music_Stream(_, CallbackQuery):
         )
     await CallbackQuery.answer(f"Emal edilir:- {title[:20]}", show_alert=True)
     mystic = await CallbackQuery.message.reply_text(
-        f"**{MUSIC_BOT_NAME} Yükləyici**\n\n**Başlıq:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
+        f"⚡️"
     )
     downloaded_file = await loop.run_in_executor(
         None, download, videoid, mystic, title
