@@ -8,22 +8,22 @@ from Yukki import BOT_USERNAME
 def setting_markup2():
     buttons = [
         [
-            InlineKeyboardButton(text="🔈 Audio Quality", callback_data="AQ"),
-            InlineKeyboardButton(text="🎚 Audio Volume", callback_data="AV"),
+            InlineKeyboardButton(text="🔈 Səs keyfiyyəti", callback_data="AQ"),
+            InlineKeyboardButton(text="🎚 Audio Səs", callback_data="AV"),
         ],
         [
             InlineKeyboardButton(
-                text="👥 Authorized Users", callback_data="AU"
+                text="👥 Səlahiyyətli İstifadəçilər", callback_data="AU"
             ),
             InlineKeyboardButton(
-                text="💻 Dashboard", callback_data="Dashboard"
+                text="💻 İdarə paneli", callback_data="Dashboard"
             ),
         ],
         [
-            InlineKeyboardButton(text="✖️ Close", callback_data="close"),
+            InlineKeyboardButton(text="✖️ ​​Bağlayın", callback_data="close"),
         ],
     ]
-    return f"🔧  **{MUSIC_BOT_NAME} Settings**", buttons
+    return f"🔧  **{MUSIC_BOT_NAME} Parametrlər**", buttons
 
 
 def start_pannel():
@@ -31,12 +31,12 @@ def start_pannel():
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🗂 Helper Commands Menu", callback_data="shikhar"
+                    text="🗂 Köməkçi Əmrləri Menyusu", callback_data="shikhar"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    text="🔧 Settings", callback_data="settingm"
+                    text="🔧 Parametrlər", callback_data="settingm"
                 )
             ],
         ]
