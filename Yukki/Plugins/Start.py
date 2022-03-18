@@ -99,7 +99,7 @@ async def useradd(_, message: Message):
     await asyncio.gather(
         message.delete(),
         message.reply_text(
-            f"Məni {message.chat.title}-çatınıza əlavə etdiyiniz üçün təşəkkür edirəm.\n{MUSIC_BOT_NAME} aktivdir.\n\nSöhbət Qrupumuz @AlmondEyessChat.",
+            f"Məni {message.chat.title}-çatınıza əlavə etdiyiniz üçün təşəkkür edirəm.\n{MUSIC_BOT_NAME}aktivdir.\n\nSöhbət Qrupumuz @AlmondEyessChat.",
             reply_markup=InlineKeyboardMarkup(out[1]),
         ),
     )
@@ -122,7 +122,7 @@ async def settings(_, message: Message):
     await asyncio.gather(
         message.delete(),
         message.reply_text(
-            f"{text}\n\n**Qrup:** {message.chat.title}\n**Grup ID si:** {message.chat.id}\n**Səs Səviyyəsi:** {volume}%",
+            f"{text}\n\n**Qrup:** {message.chat.title}\n**Qrup ID si:** {message.chat.id}\n**Səs Səviyyəsi:** {volume}%",
             reply_markup=InlineKeyboardMarkup(buttons),
         ),
     )
@@ -140,7 +140,7 @@ async def okaybhai(_, CallbackQuery):
 
 @app.on_callback_query(filters.regex("settingm"))
 async def settingm(_, CallbackQuery):
-    await CallbackQuery.answer("Bot Settings ...")
+    await CallbackQuery.answer("Bot Parametrləri ...")
     text, buttons = setting_markup()
     c_title = CallbackQuery.message.chat.title
     c_id = CallbackQuery.message.chat.id
@@ -155,7 +155,7 @@ async def settingm(_, CallbackQuery):
     else:
         volume = _check["volume"]
     await CallbackQuery.edit_message_text(
-        text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%",
+        text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {volume}%",
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
@@ -171,12 +171,12 @@ async def EVE(_, CallbackQuery):
         await CallbackQuery.answer("Changes Saved")
         await add_nonadmin_chat(chat_id)
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\nAdmins Commands Mode to **Everyone**\n\nNow anyone present in this group can skip, pause, resume, stop music.\n\nChanges Done By @{checking}",
+            text=f"{text}\n\nAdminlər Rejimi **Hər kəsə** əmr edir\n\nİndi bu qrupda olan hər kəs musiqini ötürə, dayandıra, davam etdirə və dayandıra bilər.\n\nDəyişikliklər Edildi @{checking}",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     else:
         await CallbackQuery.answer(
-            "Commands Mode is Already Set To EVERYONE", show_alert=True
+            "Əmrlər rejimi artıq hər kəs üçün təyin edilib", show_alert=True
         )
 
 
