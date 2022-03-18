@@ -189,7 +189,7 @@ async def play(_, message: Message):
         )
         return await message.reply_photo(
             photo=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+            caption=f"📎Başlıq: **{title}\n\n⏳Müddət:** {duration_min} Dəq\n\n__[Video Haqqında Əlavə Məlumat Alın](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
 
@@ -202,7 +202,7 @@ async def Music_Stream(_, CallbackQuery):
         read1 = db_mem[CallbackQuery.message.chat.id]["live_check"]
         if read1:
             return await CallbackQuery.answer(
-                "Live Streaming Playing...Stop it to play music",
+                "Canlı Yayım Oynalır...Musiqi çalmaq üçün onu dayandırın",
                 show_alert=True,
             )
         else:
@@ -217,18 +217,18 @@ async def Music_Stream(_, CallbackQuery):
     if str(duration) == "None":
         buttons = livestream_markup("720", videoid, duration, user_id)
         return await CallbackQuery.edit_message_text(
-            "**Live Stream Detected**\n\nWant to play live stream? This will stop the current playing musics(if any) and will start streaming live video.",
+            "**Canlı Yayım Aşkarlandı**\in\Canlı yayımı oynamaq istəyirsiniz? Bu, cari ifa olunan musiqiləri (əgər varsa) dayandıracaq və canlı video yayımına başlayacaq.",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if CallbackQuery.from_user.id != int(user_id):
         return await CallbackQuery.answer(
-            "This is not for you! Search You Own Song.", show_alert=True
+            "Bu sizin üçün deyil! Öz Mahnınızı Axtarın.", show_alert=True
         )
     await CallbackQuery.message.delete()
     title, duration_min, duration_sec, thumbnail = get_yt_info_id(videoid)
     if duration_sec > DURATION_LIMIT:
         return await CallbackQuery.message.reply_text(
-            f"**Duration Limit Exceeded**\n\n**Allowed Duration: **{DURATION_LIMIT_MIN} minute(s)\n**Received Duration:** {duration_min} minute(s)"
+            f"**Müddət Limiti keçdi**\n\n**İcazə verilən Müddət: **{DURATION_LIMIT_MIN} dəqiqə\n**Qəbul müddəti:** {duration_min} dəqiqə(s)"
         )
     await CallbackQuery.answer(f"Processing:- {title[:20]}", show_alert=True)
     mystic = await CallbackQuery.message.reply_text(
