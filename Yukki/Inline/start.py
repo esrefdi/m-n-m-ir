@@ -40,67 +40,67 @@ def start_pannel():
                 )
             ],
         ]
-        return f"🎛  **This is {MUSIC_BOT_NAME}**", buttons
+        return f"🎛 **Budur {MUSIC_BOT_NAME}**", buttons
     if not SUPPORT_CHANNEL and SUPPORT_GROUP:
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🗂 Helper Commands Menu", callback_data="shikhar"
+                    text="🗂 Köməkçi Əmrləri Menyusu", callback_data="shikhar"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    text="🔧 Settings", callback_data="settingm"
+                    text="🔧 Parametrlər", callback_data="settingm"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    text="📨Support Group", url=f"{SUPPORT_GROUP}"
+                    text="📨Söhbət Qrupu", url=f"{SUPPORT_GROUP}"
                 ),
             ],
         ]
-        return f"🎛  **This is {MUSIC_BOT_NAME}*", buttons
+        return f"🎛 **Budur {MUSIC_BOT_NAME}*", buttons
     if SUPPORT_CHANNEL and not SUPPORT_GROUP:
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🗂 Helper Commands Menu", callback_data="shikhar"
+                    text="🗂 Köməkçi Əmrləri Menyusu", callback_data="shikhar"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    text="🔧 Settings", callback_data="settingm"
+                    text="🔧 Parametrlər", callback_data="settingm"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    text="📨Official Channel", url=f"{SUPPORT_CHANNEL}"
+                    text="📨Kanal", url=f"{SUPPORT_CHANNEL}"
                 ),
             ],
         ]
-        return f"🎛  **This is {MUSIC_BOT_NAME}**", buttons
+        return f"🎛 **Budur {MUSIC_BOT_NAME}**", buttons
     if SUPPORT_CHANNEL and SUPPORT_GROUP:
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🗂 Helper Commands Menu", callback_data="shikhar"
+                    text="🗂 Köməkçi Əmrləri Menyusu", callback_data="shikhar"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    text="🔧 Settings", callback_data="settingm"
+                    text="🔧 Parametrlər", callback_data="settingm"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    text="📨Official Channel", url=f"{SUPPORT_CHANNEL}"
+                    text="📨Kanal", url=f"{SUPPORT_CHANNEL}"
                 ),
                 InlineKeyboardButton(
-                    text="📨Support Group", url=f"{SUPPORT_GROUP}"
+                    text="📨Söhbət Qrupu", url=f"{SUPPORT_GROUP}"
                 ),
             ],
         ]
-        return f"🎛  **This is {MUSIC_BOT_NAME}**", buttons
+        return f"🎛 **Budur {MUSIC_BOT_NAME}**", buttons
 
 
 def private_panel():
@@ -108,73 +108,73 @@ def private_panel():
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🗂 Helper Commands Menu", callback_data="shikhar"
+                    text="🗂 Köməkçi Əmrləri Menyusu", callback_data="shikhar"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    "➕ Add me to your Group",
+                    "➕ Məni öz qrupuna əlavə et",
                     url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                 )
             ],
         ]
-        return f"🎛  **This is {MUSIC_BOT_NAME}**", buttons
+        return f"🎛 **Budur {MUSIC_BOT_NAME}**", buttons
     if not SUPPORT_CHANNEL and SUPPORT_GROUP:
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🗂 Helper Commands Menu", callback_data="shikhar"
+                    text="🗂 Köməkçi Əmrləri Menyusu", callback_data="shikhar"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    "➕ Add me to your Group",
+                    "➕ Məni öz qrupuna əlavə et",
                     url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                 )
             ],
             [
                 InlineKeyboardButton(
-                    text="📨Support Group", url=f"{SUPPORT_GROUP}"
+                    text="📨Söhbət Qrupu", url=f"{SUPPORT_GROUP}"
                 ),
             ],
         ]
-        return f"🎛  **This is {MUSIC_BOT_NAME}*", buttons
+        return f"🎛 **Budur {MUSIC_BOT_NAME}*", buttons
     if SUPPORT_CHANNEL and not SUPPORT_GROUP:
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🗂 Helper Commands Menu", callback_data="shikhar"
+                    text="🗂 Köməkçi Əmrləri Menyusu", callback_data="shikhar"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    "➕ Add me to your Group",
+                    "➕ Məni öz qrupuna əlavə et",
                     url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                 )
             ],
             [
                 InlineKeyboardButton(
-                    text="📨Official Channel", url=f"{SUPPORT_CHANNEL}"
+                    text="📨Kanal", url=f"{SUPPORT_CHANNEL}"
                 ),
             ],
         ]
-        return f"🎛  **This is {MUSIC_BOT_NAME}**", buttons
+        return f"🎛 **Budur {MUSIC_BOT_NAME}**", buttons
     if SUPPORT_CHANNEL and SUPPORT_GROUP:
         buttons = [
             [
                 InlineKeyboardButton(
-                    text="🗂 Helper Commands Menu", callback_data="shikhar"
+                    text="🗂 Köməkçi Əmrləri Menyusu", callback_data="shikhar"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    "➕ Add me to your Group",
+                    "➕ Məni öz qrupuna əlavə et",
                     url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                 )
             ],
             [
                 InlineKeyboardButton(
-                    text="📨Official Channel", url=f"{SUPPORT_CHANNEL}"
+                    text="📨Kanal", url=f"{SUPPORT_CHANNEL}"
                 ),
                 InlineKeyboardButton(
                     text="📨Support Group", url=f"{SUPPORT_GROUP}"
