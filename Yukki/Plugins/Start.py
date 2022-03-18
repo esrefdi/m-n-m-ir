@@ -243,12 +243,12 @@ async def start_markup_check(_, CallbackQuery):
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "Custommarkup":
-        await CallbackQuery.answer("Bot Settings ...")
+        await CallbackQuery.answer("Bot Parametrləri ...")
         text, buttons = custommarkup()
         _check = await get_start(c_id, "assistant")
         volume = _check["volume"]
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+            text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {səs}%\n**Audio  Keyfiyyət:** Defolt Ən Yaxşı",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "LV":
@@ -258,13 +258,13 @@ async def start_markup_check(_, CallbackQuery):
         volume = 25
         try:
             await Yukki.pytgcalls.change_volume_call(c_id, volume)
-            await CallbackQuery.answer("Setting Audio Changes ...")
+            await CallbackQuery.answer("Audio Dəyişikliklərin Ayarlanması...")
         except:
-            return await CallbackQuery.answer("No active Group Call...")
+            return await CallbackQuery.answer("Aktiv Qrup Zəngi yoxdur...")
         await save_start(c_id, "assistant", assis)
         text, buttons = volmarkup()
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+            text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {səs}%\n**Audio  Keyfiyyət:** Defolt Ən Yaxşı",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "MV":
@@ -274,13 +274,13 @@ async def start_markup_check(_, CallbackQuery):
         volume = 50
         try:
             await Yukki.pytgcalls.change_volume_call(c_id, volume)
-            await CallbackQuery.answer("Setting Audio Changes ...")
+            await CallbackQuery.answer("Audio Dəyişikliklərin Ayarlanması...")
         except:
-            return await CallbackQuery.answer("No active Group Call...")
+            return await CallbackQuery.answer("Aktiv Qrup Zəngi yoxdur...")
         await save_start(c_id, "assistant", assis)
         text, buttons = volmarkup()
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+            text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {səs}%\n**Audio  Keyfiyyət:** Defolt Ən Yaxşı",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "HV":
@@ -290,13 +290,13 @@ async def start_markup_check(_, CallbackQuery):
         volume = 100
         try:
             await Yukki.pytgcalls.change_volume_call(c_id, volume)
-            await CallbackQuery.answer("Setting Audio Changes ...")
+            await CallbackQuery.answer("Audio Dəyişikliklərin Ayarlanması...")
         except:
-            return await CallbackQuery.answer("No active Group Call...")
+            return await CallbackQuery.answer("Aktiv Qrup Zəngi yoxdur...")
         await save_start(c_id, "assistant", assis)
         text, buttons = volmarkup()
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+            text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {səs}%\n**Audio  Keyfiyyət:** Defolt Ən Yaxşı",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "VAM":
@@ -306,13 +306,13 @@ async def start_markup_check(_, CallbackQuery):
         volume = 200
         try:
             await Yukki.pytgcalls.change_volume_call(c_id, volume)
-            await CallbackQuery.answer("Setting Audio Changes ...")
+            await CallbackQuery.answer("Audio Dəyişikliklərin Ayarlanması...")
         except:
-            return await CallbackQuery.answer("No active Group Call...")
+            return await CallbackQuery.answer("Aktiv Qrup Zəngi yoxdur...")
         await save_start(c_id, "assistant", assis)
         text, buttons = volmarkup()
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+            text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {səs}%\n**Audio  Keyfiyyət:** Defolt Ən Yaxşı",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "PTEN":
@@ -328,13 +328,13 @@ async def start_markup_check(_, CallbackQuery):
         }
         try:
             await Yukki.pytgcalls.change_volume_call(c_id, volume)
-            await CallbackQuery.answer("Setting Audio Changes ...")
+            await CallbackQuery.answer("Audio Dəyişikliklərin Ayarlanması...")
         except:
-            return await CallbackQuery.answer("No active Group Call...")
+            return await CallbackQuery.answer("Aktiv Qrup Zəngi yoxdur...")
         await save_start(c_id, "assistant", assis)
         text, buttons = custommarkup()
         await CallbackQuery.edit_message_text(
-            text=f"{text}\n\n**Group:** {c_title}\n**Group ID:** {c_id}\n**Volume Level:** {volume}%\n**Audio Quality:** Default Best",
+            text=f"{text}\n\n**Qrup:** {c_title}\n**Qrup ID si:** {c_id}\n**Səs Səviyyəsi:** {səs}%\n**Audio  Keyfiyyət:** Defolt Ən Yaxşı",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     if command == "MTEN":
