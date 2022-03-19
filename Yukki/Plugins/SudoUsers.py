@@ -178,7 +178,7 @@ async def set_video_limit_kid(_, message: Message):
          )
     await set_video_limit(141414, limit)
     await message.reply_text(
-        f"Video Calls Maximum Limit Defined to {limit} Chats."
+        f"Video Zənglərin Maksimum Limiti Söhbətlərə {limit} Təyin edilib."
     )
 
 
@@ -187,7 +187,7 @@ async def set_video_limit_kid(_, message: Message):
 
 @app.on_message(filters.command("maintenance") & filters.user(SUDOERS))
 async def maintenance(_, message):
-    usage = "**Usage:**\n/maintenance [enable|disable]"
+    usage = "**İstifadə:**\n/maintenance [enable|disable]"
     if len(message.command) != 2:
         return await message.reply_text(usage)
     chat_id = message.chat.id
@@ -212,9 +212,9 @@ async def maintenance(_, message):
 async def logger(_, message):
     if LOG_SESSION == "None":
         return await message.reply_text(
-            "No Logger Account Defined.\n\nPlease Set <code>LOG_SESSION</code> var and then try loggging."
+            "Heç bir Qeydiyyatçı Hesabı Müəyyən edilməmişdir.\n\nLütfən, <code>LOG_SESSION</code> parametrini təyin edin və sonra daxil olmağa cəhd edin."
         )
-    usage = "**Usage:**\n/logger [enable|disable]"
+    usage = "**İstifadə:**\n/logger [enable|disable]"
     if len(message.command) != 2:
         return await message.reply_text(usage)
     chat_id = message.chat.id
@@ -239,7 +239,7 @@ async def logger(_, message):
 async def ban_globally(_, message):
     if not message.reply_to_message:
         if len(message.command) < 2:
-            await message.reply_text("**Usage:**\n/gban [USERNAME | USER_ID]")
+            await message.reply_text("**İstifadə:**\n/gban [USERNAME | USER_ID]")
             return
         user = message.text.split(None, 2)[1]
         if "@" in user:
@@ -248,12 +248,12 @@ async def ban_globally(_, message):
         from_user = message.from_user
         if user.id == from_user.id:
             return await message.reply_text(
-                "You want to gban yourself? How Fool!"
-            )
+                "Sən özünü gban etmək istəyirsən? Necə də axmaq!"
+             )
         elif user.id == BOT_ID:
-            await message.reply_text("Should i block myself? Lmao Ded!")
+            await message.reply_text("Özümü bloklamalıyam? Lom Gedə Lom!")
         elif user.id in SUDOERS:
-            await message.reply_text("You want to block a sudo user? KIDXZ")
+            await message.reply_text("Sudo istifadəçisini bloklamaq istəyirsiniz? Mal")
         else:
             await add_gban_user(user.id)
             served_chats = []
