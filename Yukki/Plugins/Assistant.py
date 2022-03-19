@@ -16,16 +16,16 @@ __HELP__ = f"""
 
 
 /checkassistant
-- Söhbətinizin ayrılmış köməkçisini yoxlayın
+- Söhbətinizin ayrılmış Assistant ı yoxlayın
 
 
 **Qeyd:**
  - Yalnız Sudo İstifadəçiləri üçün
 
-{ASSISTANT_PREFIX[0]}blok [ İstifadəçi Mesajına Cavab Verin]
+{ASSISTANT_PREFIX[0]}blok [İstifadəçi Mesajına Cavab Verin]
  - İstifadəçini köməkçi hesabından bloklayır.
 
-{ASSISTANT_PREFIX[0]}blokdan çıxarın [ İstifadəçi Mesajına Cavab Verin]
+{ASSISTANT_PREFIX[0]}blokdan çıxarın [İstifadəçi Mesajına Cavab Verin]
  - İstifadəçini Assistent Hesabından blokdan çıxarır.
 
 {ASSISTANT_PREFIX[0]}təsdiq edin [ İstifadəçi Mesajına Cavab Verin]
@@ -34,17 +34,17 @@ __HELP__ = f"""
 {ASSISTANT_PREFIX[0]}təsdiq et [ İstifadəçi Mesajına Cavab Verin]
  - İstifadəçini DM üçün təsdiq etmir.
 
-{ASSISTANT_PREFIX[0]}pfp [ Fotoya cavab verin]
- - Köməkçi hesab PFP-ni dəyişir.
+{ASSISTANT_PREFIX[0]}pfp [Fotoya cavab verin]
+ - Assistant hesab PFP-ni dəyişir.
 
  {ASSISTANT_PREFIX[0]}bio [Bio mətn]
  - Assistant Hesabının Tərkibi dəyişdirilir.
 
 /changeassistant [ASS NÖMRƏSİ]
- - Əvvəlki köməkçini yenisi ilə dəyişdirin.
+ - Əvvəlki Assistant ı yenisi ilə dəyişdirin.
 
 /setassistant [ASS NÖMRƏSİ və ya Təsadüfi]
- - Söhbət üçün köməkçi hesabı təyin edin.
+ - Söhbət üçün Assistant hesabı təyin edin.
  """
 
 
@@ -112,10 +112,10 @@ async def check_ass(_, message: Message):
     _assistant = await get_assistant(message.chat.id, "assistant")
     if not _assistant:
         return await message.reply_text(
-            "No Pre-Saved Assistant Found.\n\nYou can set Assistant Via /play"
+            "Əvvəlcədən Saxlanmış Assistent Tapılmadı.\in\Siz Assistenti /play vasitəsilə quraşdıra bilərsiniz"
         )
     else:
         ass = _assistant["saveassistant"]
         return await message.reply_text(
-            f"Pre-Saved Assistant Found\n\nAssistanty Number {ass} "
+            f"Qabaqcadan Saxlanmış Assistent Tapıldı\n\nKöməkçi Nömrəsi {ass} "
         )
