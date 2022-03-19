@@ -16,32 +16,32 @@ from Yukki.Database import (add_gban_user, add_off, add_on, add_sudo,
                             remove_gban_user, remove_served_chat, remove_sudo,
                             set_video_limit)
 
-__MODULE__ = "SudoUsers"
+__MODULE__ = "Sudoİstifadəçilər"
 __HELP__ = """
 
 
 /sudolist 
-    Check the sudo user list of Bot. 
+    Botun sudo istifadəçi siyahısını yoxlayın.
 
 
-**Note:**
-Only for Sudo Users. 
+ **Qeyd:**
+ Yalnız Sudo İstifadəçiləri üçün. 
 
 
-/addsudo [Username or Reply to a user]
-- To Add A User In Bot's Sudo Users.
+/addsudo [İstifadəçi adı və ya istifadəçiyə cavab]
+ - Botun Sudo İstifadəçilərinə İstifadəçi əlavə etmək üçün.
 
-/delsudo [Username or Reply to a user]
-- To Remove A User from Bot's Sudo Users.
+ /delsudo [İstifadəçi adı və ya istifadəçiyə cavab]
+ - İstifadəçini Botun Sudo İstifadəçilərindən Silmək üçün.
 
 /maintenance [enable / disable]
-- When enabled Bot goes under maintenance mode. No one can play Music now!
+- Aktivləşdirildikdə, Bot texniki xidmət rejiminə keçir.  İndi heç kim Musiqi oynaya bilməz!
 
 /logger [enable / disable]
-- When enabled Bot logs the searched queries in logger group.
+- Aktivləşdirildikdə, Bot axtarış edilən sorğuları qeyd edən qrupda qeyd edir.
 
 /clean
-- Clean Temp Files and Logs.
+- Temp faylları və qeydləri təmizləyin.
 """
 # Add Sudo Users!
 
@@ -51,8 +51,8 @@ async def useradd(_, message: Message):
     if not message.reply_to_message:
         if len(message.command) != 2:
             await message.reply_text(
-                "Reply to a user's message or give username/user_id."
-            )
+                "İstifadəçinin mesajına cavab verin və ya istifadəçi adı/user_id verin."
+             )
             return
         user = message.text.split(None, 1)[1]
         if "@" in user:
@@ -60,12 +60,12 @@ async def useradd(_, message: Message):
         user = await app.get_users(user)
         if user.id in SUDOERS:
             return await message.reply_text(
-                f"{user.mention} is already a sudo user."
-            )
+                f"{user.mention} artıq sudo istifadəçisidir."
+             )
         added = await add_sudo(user.id)
         if added:
             await message.reply_text(
-                f"Added **{user.mention}** to Sudo Users."
+                f"Sudo İstifadəçilərinə **{user.mention}** əlavə edildi."
             )
             os.system(f"kill -9 {os.getpid()} && python3 -m Yukki")
         else:
@@ -73,12 +73,12 @@ async def useradd(_, message: Message):
         return
     if message.reply_to_message.from_user.id in SUDOERS:
         return await message.reply_text(
-            f"{message.reply_to_message.from_user.mention} is already a sudo user."
-        )
+            f"{message.reply_to_message.from_user.mention} artıq sudo istifadəçisidir."
+         )
     added = await add_sudo(message.reply_to_message.from_user.id)
     if added:
         await message.reply_text(
-            f"Added **{message.reply_to_message.from_user.mention}** to Sudo Users"
+            f"Sudo İstifadəçilərinə **{message.reply_to_message.from_user.mention}** əlavə edildi"
         )
         os.system(f"kill -9 {os.getpid()} && python3 -m Yukki")
     else:
@@ -91,8 +91,8 @@ async def userdel(_, message: Message):
     if not message.reply_to_message:
         if len(message.command) != 2:
             await message.reply_text(
-                "Reply to a user's message or give username/user_id."
-            )
+                "İstifadəçinin mesajına cavab verin və ya istifadəçi adı/user_id verin."
+             )
             return
         user = message.text.split(None, 1)[1]
         if "@" in user:
@@ -100,14 +100,14 @@ async def userdel(_, message: Message):
         user = await app.get_users(user)
         from_user = message.from_user
         if user.id not in SUDOERS:
-            return await message.reply_text(f"Not a part of Bot's Sudo.")
+            return await message.reply_text(f"Bot Sudo-nun bir hissəsi deyil.")
         removed = await remove_sudo(user.id)
         if removed:
             await message.reply_text(
-                f"Removed **{user.mention}** from {MUSIC_BOT_NAME}'s Sudo."
+                f"**{user.mention}** {MUSIC_BOT_NAME}-nin Sudo-dan silindi."
             )
             return os.system(f"kill -9 {os.getpid()} && python3 -m Yukki")
-        await message.reply_text(f"Something wrong happened.")
+        await message.reply_text(f"Bir şey səhv oldu.")
         return
     from_user_id = message.from_user.id
     user_id = message.reply_to_message.from_user.id
@@ -119,16 +119,16 @@ async def userdel(_, message: Message):
     removed = await remove_sudo(user_id)
     if removed:
         await message.reply_text(
-            f"Removed **{mention}** from {MUSIC_BOT_NAME}'s Sudo."
+            f"**{mention}** {MUSIC_BOT_NAME}-nin Sudo-dan silindi."
         )
         return os.system(f"kill -9 {os.getpid()} && python3 -m Yukki")
-    await message.reply_text(f"Something wrong happened.")
+    await message.reply_text(f"Bir şey səhv oldu.")
 
 
 @app.on_message(filters.command("sudolist"))
 async def sudoers_list(_, message: Message):
     sudoers = await get_sudoers()
-    text = "⭐️<u> **Owners:**</u>\n"
+    text = "⭐️<u> **Sahiblər:**</u>\n"
     sex = 0
     for x in OWNER_ID:
         try:
@@ -146,13 +146,13 @@ async def sudoers_list(_, message: Message):
                 user = user.first_name if not user.mention else user.mention
                 if smex == 0:
                     smex += 1
-                    text += "\n⭐️<u> **Sudo Users:**</u>\n"
+                    text += "\n⭐️<u> **Sudo İstifadəçiləri:**</u>\n"
                 sex += 1
                 text += f"{sex}➤ {user}\n"
             except Exception:
                 continue
     if not text:
-        await message.reply_text("No Sudo Users")
+        await message.reply_text("Sudo İstifadəçiləri Yoxdur")
     else:
         await message.reply_text(text)
 
@@ -166,7 +166,7 @@ async def sudoers_list(_, message: Message):
 )
 async def set_video_limit_kid(_, message: Message):
     if len(message.command) != 2:
-        usage = "**Usage:**\n/set_video_limit [Number of chats allowed]"
+        usage = "**İstifadə:**\n/set_video_limit [İcazə verilən söhbətlərin sayı]"
         return await message.reply_text(usage)
     chat_id = message.chat.id
     state = message.text.split(None, 1)[1].strip()
@@ -174,8 +174,8 @@ async def set_video_limit_kid(_, message: Message):
         limit = int(state)
     except:
         return await message.reply_text(
-            "Please Use Numeric Numbers for Setting Limit."
-        )
+             "Lütfü təyin etmək üçün rəqəmsal nömrələrdən istifadə edin."
+         )
     await set_video_limit(141414, limit)
     await message.reply_text(
         f"Video Calls Maximum Limit Defined to {limit} Chats."
