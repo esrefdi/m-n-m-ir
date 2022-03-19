@@ -236,9 +236,9 @@ async def admins(_, message: Message):
                         photo=thumb,
                         reply_markup=InlineKeyboardMarkup(buttons),
                         caption=(
-                             f"<b>__Video Çatı Atladı__</b>\n\n🎥<b>__Video Oxumağa Başladı:__ </b> [{title[:25]}](https://www.youtube.com/watch  ?v={videoid}) \n👤**__Tələb:__**    {mention}"
+                             f"<b>__Video Çatı Atladı__</b>\n\n🎥<b>__Video Oxumağa Başladı:__ </b> [{title[:25]}](https://www.youtube.com/watch  ?v={videoid}) \n👤**__Tələb:__** {mention}"
                          ),
-                     )
+                       )
                     await mystic.delete()
                     os.remove(thumb)
                     await start_timer(
