@@ -16,12 +16,12 @@ __HELP__ = """
  Yalnız Sudo İstifadəçiləri üçün.
 
 
-/blacklistchat [CHAT_ID] 
-- Blacklist any chat from using Music Bot
+/blacklistchat [CHAT_ID]
+ - Music Bot-dan istifadə etməklə istənilən söhbəti qara siyahıya salın
 
 
-/whitelistchat [CHAT_ID] 
-- Whitelist any blacklisted chat from using Music Bot
+/whitelistchat [CHAT_ID]
+ - Music Bot-dan istifadə edərək qara siyahıya salınmış hər hansı söhbəti ağ siyahıya daxil edin
 
 """
 
@@ -30,7 +30,7 @@ __HELP__ = """
 async def blacklist_chat_func(_, message: Message):
     if len(message.command) != 2:
         return await message.reply_text(
-            "**Usage:**\n/blacklistchat [CHAT_ID]"
+            "**İstifadə:**\n/qara siyahıchat [CHAT_ID]"
         )
     chat_id = int(message.text.strip().split()[1])
     if chat_id in await blacklisted_chats():
