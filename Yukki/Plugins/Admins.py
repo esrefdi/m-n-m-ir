@@ -253,7 +253,7 @@ async def admins(_, message: Message):
             else:
                 mystic = await message.reply_text(
                     f"**{MUSIC_BOT_NAME} Pleylist Funksiyası**\n\n__Pleylistdən Növbəti Musiqi Endirilir....__"
-                 )
+                    )
                  (
                     title,
                     duration_min,
