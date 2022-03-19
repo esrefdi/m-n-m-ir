@@ -20,19 +20,19 @@ __HELP__ = """
 
 
 /playplaylist 
-- Start playing Your Saved Playlist.
+- Saxlanmış Pleylistinizi oynatmağa başlayın.
 
 
 /playlist 
-- Check Your Saved Playlist On Servers.
+- Serverlərdə Saxlanmış Pleylistinizi Yoxlayın.
 
 
 /delmyplaylist
-- Delete any saved music in your playlist
+- Pleylistinizdə saxlanan hər hansı musiqini silin
 
 
 /delgroupplaylist
-- Delete any saved music in your group's playlist [Requires Admin Rights.]
+- Qrupunuzun pleylistində saxlanmış hər hansı musiqini silin [İdarəetmə hüquqları tələb olunur.]
 """
 
 
@@ -72,7 +72,7 @@ async def play_playlist_cmd(_, message):
             hmo = await message.reply_photo(
                 photo=thumb,
                 caption=(
-                    f"**{MUSIC_BOT_NAME}'s Playlist Feature**\nSelect the Playlist you want to play!.\n\nYou can play someone else's playlist too:-\n- /playplaylist [Username]\n- /playplaylist [USER ID](if user has deleted acc)\n- /playplaylist [Reply to a User]"
+                    f"**{MUSIC_BOT_NAME}-nin Pleylist Xüsusiyyəti**\nOxumaq istədiyiniz Pleylistini seçin!.\n\nSiz başqasının pleylistini də oxuya bilərsiniz:-\n- /playlist [İstifadəçi adı]\n- /playlist [USER]  ID](istifadəçi acc silibsə)\n- /playlist [İstifadəçiyə cavab verin]"
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
@@ -84,7 +84,7 @@ async def play_playlist_cmd(_, message):
             await message.reply_photo(
                 photo=thumb,
                 caption=(
-                    f"**{MUSIC_BOT_NAME}'s Playlist Feature**\nSelect the Playlist you want to play!.\n\nYou can play someone else's playlist too:-\n- /playplaylist [Username]\n- /playplaylist [USER ID](if user has deleted acc)\n- /playplaylist [Reply to a User]"
+                    f"**{MUSIC_BOT_NAME}-nin Pleylist Xüsusiyyəti**\nOxumaq istədiyiniz Pleylistini seçin!.\n\nSiz başqasının pleylistini də oxuya bilərsiniz:-\n- /playlist [İstifadəçi adı]\n- /playlist [USER]  ID](istifadəçi acc silibsə)\n- /playlist [İstifadəçiyə cavab verin]"
                 ),
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
@@ -100,7 +100,7 @@ async def play_playlist_cmd(_, message):
         hmo = await message.reply_photo(
             photo=thumb,
             caption=(
-                f"**{MUSIC_BOT_NAME}'s Playlist Feature**\nSelect the Playlist you want to play!.\n\nYou can play someone else's playlist too:-\n- /playplaylist [Username]\n- /playplaylist [USER ID](if user has deleted acc)\n- /playplaylist [Reply to a User]"
+                f"**{MUSIC_BOT_NAME}-nin Pleylist Xüsusiyyəti**\nOxumaq istədiyiniz Pleylistini seçin!.\n\nSiz başqasının pleylistini də oxuya bilərsiniz:-\n- /playlist [İstifadəçi adı]\n- /playlist [USER]  ID](istifadəçi acc silibsə)\n- /playlist [İstifadəçiyə cavab verin]"
             ),
             reply_markup=InlineKeyboardMarkup(buttons),
         )
@@ -119,8 +119,8 @@ async def playlist(_, message):
     await message.reply_photo(
         photo=thumb,
         caption=(
-            f"**{MUSIC_BOT_NAME}'s Playlist Feature**\n\nSelect The Playlist, You want to **check!**"
-        ),
+            f"**{MUSIC_BOT_NAME}-nin Pleylist Xüsusiyyəti**\n\nPleylistini seçin, **yoxlamaq istəyirsiniz!**"
+         ),
         reply_markup=InlineKeyboardMarkup(buttons),
     )
     return
@@ -174,7 +174,7 @@ options_Genre = [
 
 @app.on_message(filters.command("delmyplaylist") & filters.group)
 async def del_cmd(_, message):
-    usage = f"Usage:\n\n/delmyplaylist [Genre] [Numbers between 1-30] ( to delete a particular music in playlist )\n\nor\n\n/delmyplaylist [Genre] all ( to delete whole playlist )\n\n**Genres:-**\n{' | '.join(options_Genre)}"
+    usage = f"İstifadə:\n\n/delmyplaylist [Janr] [1-30 arası rəqəmlər] ( pleylistdəki müəyyən musiqini silmək üçün )\n\nvə ya\n\n/delmyplaylist [Janr] hamısı (bütün çalğı siyahısını silmək üçün )\  n\n**Janrlar:-**\n{' | '.join(options_Genre)}"
     if len(message.command) < 3:
         return await message.reply_text(usage)
     genre = message.text.split(None, 2)[1].strip()
@@ -188,7 +188,7 @@ async def del_cmd(_, message):
     if str(count) == "all":
         buttons = delete_playlist_markuup("Personal", genre)
         return await message.reply_text(
-            f"Confirmation!!\nYou sure you want to delete your whole {genre} playlist?",
+            f"Təsdiq!\nBütün {genre} pleylistinizi silmək istədiyinizə əminsiniz?",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     else:
