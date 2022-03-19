@@ -223,7 +223,7 @@ async def set_var(client, message):
         if dotenv.get_key(path, to_set):
             return await message.reply_text(f"**.env Var Yeniləmə:**\n\n`{to_set}` uğurla yeniləndi. Botu yenidən başlatmaq üçün /restart əmrini icra edin.")
         else:
-            return await message.reply_text(f"**.env dəyişən əlavə edilməsi:**\n\n`{to_set}` has been added sucsessfully. To restart the bot touch /restart command.")
+            return await message.reply_text(f"**. env dəyişəninin əlavəsi:** \n\n`{to_set}` uğurla əlavə edildi. Botu yenidən başlatmaq üçün /restart əmrini icra edin.")
 
 
 @app.on_message(filters.command("usage") & filters.user(SUDOERS))
@@ -232,12 +232,12 @@ async def usage_dynos(client, message):
     if await is_heroku():
         if HEROKU_API_KEY == "" and HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\nIn order to update your app, you need to set up the `HEROKU_API_KEY` and `HEROKU_APP_NAME` vars respectively!"
-            )
+                "<b>HEROKU TƏTBİQİ ALINDI!</b>\n\nTətbiqinizi yeniləmək üçün müvafiq olaraq `HEROKU_API_KEY` və `HEROKU_APP_NAME` variantlarını quraşdırmalısınız!"
+             )
         elif HEROKU_API_KEY == "" or HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\n<b>Make sure to add both</b> `HEROKU_API_KEY` **and** `HEROKU_APP_NAME` <b>vars correctly in order to be able to update remotely!</b>"
-            )
+                "<b>HEROKU TƏTBİQİ AŞPAQLANIB!</b>\n\n<b>Hər ikisini</b> `HEROKU_API_KEY` **və** `HEROKU_APP_NAME` <b>varları düzgün əlavə etdiyinizə əmin olun.  uzaqdan yeniləyin!</b>"
+             )
     else:
         return await message.reply_text("Only for Heroku Apps")
     try:
@@ -245,9 +245,9 @@ async def usage_dynos(client, message):
         happ = Heroku.app(HEROKU_APP_NAME)
     except BaseException:
         return await message.reply_text(
-            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
+            "Lütfən, Heroku API Açarınızın, Proqramınızın adının heroku-da düzgün konfiqurasiya edildiyinə əmin olun"
         )
-    dyno = await message.reply_text("Checking Heroku Usage. Please Wait")
+    dyno = await message.reply_text("Heroku istifadəsinin yoxlanılması.  Zəhmət olmasa, gözləyin")
     account_id = Heroku.account().id
     useragent = (
         "Mozilla/5.0 (Linux; Android 10; SM-G975F) "
@@ -255,9 +255,9 @@ async def usage_dynos(client, message):
         "Chrome/80.0.3987.149 Mobile Safari/537.36"
     )
     headers = {
-        "User-Agent": useragent,
-        "Authorization": f"Bearer {HEROKU_API_KEY}",
-        "Accept": "application/vnd.heroku+json; version=3.account-quotas",
+        "İstifadəçi-Agent": useragent,
+        "İcazə": f"Daşıyıcı {HEROKU_API_KEY}",
+         "Qəbul edirəm": "application/vnd.heroku+json; version=3.account-quotas",
     }
     path = "/accounts/" + account_id + "/actions/get-quota"
     r = requests.get("https://api.heroku.com" + path, headers=headers)
@@ -284,13 +284,13 @@ async def usage_dynos(client, message):
     AppMinutes = math.floor(AppQuotaUsed % 60)
     await asyncio.sleep(1.5)
     text = f"""
-**DYNO USAGE**
+**DYNO İSTİFADƏ**
 
 <u>Usage:</u>
-Total Used: `{AppHours}`**h**  `{AppMinutes}`**m**  [`{AppPercentage}`**%**]
+Ümumi istifadə: `{AppHours}`**h**  `{AppMinutes}`**m**  [`{AppPercentage}`**%**]
 
-<u>Remaining Quota:</u>
-Total Left: `{hours}`**h**  `{minutes}`**m**  [`{percentage}`**%**]"""
+<u>Qalan Kvota:</u>
+Ümumi Sol: `{hours}`**h**  `{minutes}`**m**  [`{percentage}`**%**]"""
     return await dyno.edit(text)
 
 
@@ -299,12 +299,12 @@ async def update_(client, message):
     if await is_heroku():
         if HEROKU_API_KEY == "" and HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\nIn order to update your app, you need to set up the `HEROKU_API_KEY` and `HEROKU_APP_NAME` vars respectively!"
-            )
+                "<b>HEROKU TƏTBİQİ ALINDI!</b>\n\nTətbiqinizi yeniləmək üçün müvafiq olaraq `HEROKU_API_KEY` və `HEROKU_APP_NAME` variantlarını quraşdırmalısınız!"
+             )
         elif HEROKU_API_KEY == "" or HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\n<b>Make sure to add both</b> `HEROKU_API_KEY` **and** `HEROKU_APP_NAME` <b>vars correctly in order to be able to update remotely!</b>"
-            )
+                "<b>HEROKU TƏTBİQİ AŞPAQLANIB!</b>\n\n<b>Hər ikisini</b> `HEROKU_API_KEY` **və** `HEROKU_APP_NAME` <b>varları düzgün əlavə etdiyinizə əmin olun.  uzaqdan yeniləyin!</b>"
+             )
     response = await message.reply_text("Checking for available updates...")
     try:
         repo = Repo()
@@ -330,13 +330,13 @@ async def update_(client, message):
     )
     for info in repo.iter_commits(f"HEAD..origin/{UPSTREAM_BRANCH}"):
         updates += f"<b>➣ #{info.count()}: [{info.summary}]({REPO_}/commit/{info}) by -> {info.author}</b>\n\t\t\t\t<b>➥ Commited on:</b> {ordinal(int(datetime.fromtimestamp(info.committed_date).strftime('%d')))} {datetime.fromtimestamp(info.committed_date).strftime('%b')}, {datetime.fromtimestamp(info.committed_date).strftime('%Y')}\n\n"
-    _update_response_ = "<b>A new update is available for the Bot!</b>\n\n➣ Pushing Updates Now</code>\n\n**<u>Updates:</u>**\n\n"
+    _update_response_ = "<b>Bot üçün yeni güncəlləmə əlçatandır!</b>\n\n➣ İndi Yeniləmələr Təklif olunur</code>\n\n**<u>Yeniləmələr:</u>**\n\n  "
     _final_updates_ = _update_response_ + updates
     if len(_final_updates_) > 4096:
         link = await paste_queue(updates)
         url = link + "/index.txt"
         nrs = await response.edit(
-            f"<b>A new update is available for the Bot!</b>\n\n➣ Pushing Updates Now</code>\n\n**<u>Updates:</u>**\n\n[Click Here to checkout Updates]({url})"
+            f"<b>Bot üçün yeni güncəlləmə əlçatandır!</b>\n\n➣ Yeniləmələri İndi İtmək</code>\n\n**<u>Yeniləmələr:</u>**\n\  n[Yeniləmələri yoxlamaq üçün buraya klikləyin]({url})"
         )
     else:
         nrs = await response.edit(
@@ -346,7 +346,7 @@ async def update_(client, message):
     if await is_heroku():
         try:
             await response.edit(
-                f"{nrs.text}\n\nBot was updated successfully on Heroku! Now, wait for 2 - 3 mins until the bot restarts!"
+                f"{nrs.text}\n\nBot Heroku-da uğurla yeniləndi!  İndi, bot yenidən başlayana qədər 2-3 dəqiqə gözləyin!"
             )
             os.system(
                 f"{XCB[5]} {XCB[7]} {XCB[9]}{XCB[4]}{XCB[0]*2}{XCB[6]}{XCB[4]}{XCB[8]}{XCB[1]}{XCB[5]}{XCB[2]}{XCB[6]}{XCB[2]}{XCB[3]}{XCB[0]}{XCB[10]}{XCB[2]}{XCB[5]} {XCB[11]}{XCB[4]}{XCB[12]}"
@@ -354,7 +354,7 @@ async def update_(client, message):
             return
         except Exception as err:
             await response.edit(
-                f"{nrs.text}\n\nSomething went wrong while initiating reboot! Please try again later or check logs for more info."
+                f"{nrs.text}\n\nYenidən yükləməyə başlayarkən xəta baş verdi!  Lütfən, daha sonra yenidən cəhd edin və ya əlavə məlumat üçün qeydləri yoxlayın."
             )
             return await app.send_message(
                 LOG_GROUP_ID,
@@ -362,7 +362,7 @@ async def update_(client, message):
             )
     else:
         await response.edit(
-            f"{nrs.text}\n\nBot was updated successfully! Now, wait for 1 - 2 mins until the bot reboots!"
+            f"{nrs.text}\n\nBot uğurla yeniləndi!  İndi, bot yenidən işə düşənə qədər 1-2 dəqiqə gözləyin!"
         )
         os.system("pip3 install -r requirements.txt")
         os.system(f"kill -9 {os.getpid()} && bash start")
@@ -376,12 +376,12 @@ async def restart_(_, message):
     if await is_heroku():
         if HEROKU_API_KEY == "" and HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\nIn order to restart your app, you need to set up the `HEROKU_API_KEY` and `HEROKU_APP_NAME` vars respectively!"
-            )
+                "<b>HEROKU TƏTBİQİ ALINDI!</b>\n\nTətbiqinizi yenidən başlatmaq üçün müvafiq olaraq `HEROKU_API_KEY` və `HEROKU_APP_NAME` variantlarını quraşdırmalısınız!"
+             )
         elif HEROKU_API_KEY == "" or HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\n<b>Make sure to add both</b> `HEROKU_API_KEY` **and** `HEROKU_APP_NAME` <b>vars correctly in order to be able to restart remotely!</b>"
-            )
+                "<b>HEROKU TƏTBİQİ AŞPAQLANIB!</b>\n\n<b>Hər ikisini</b> `HEROKU_API_KEY` **və** `HEROKU_APP_NAME` <b>varları düzgün əlavə etdiyinizə əmin olun.  uzaqdan yenidən başladın!</b>"
+             )
         try:
             served_chats = []
             try:
@@ -394,7 +394,7 @@ async def restart_(_, message):
                 try:
                     await app.send_message(
                         x,
-                        f"{MUSIC_BOT_NAME} has just restarted herself. Sorry for the issues.\n\nStart playing after 10-15 seconds again.",
+                        f"{MUSIC_BOT_NAME} indicə özünü yenidən başladıb. Problemlərə görə üzr istəyirik.\n\n10-15 saniyədən sonra oynamağa başlayın again.",
                     )
                     await remove_active_chat(x)
                     await remove_active_video_chat(x)
@@ -402,13 +402,13 @@ async def restart_(_, message):
                     pass
             heroku3.from_key(HEROKU_API_KEY).apps()[HEROKU_APP_NAME].restart()
             await response.edit(
-                "**Heroku Restart**\n\nReboot has been initiated successfully! Wait for 1 - 2 minutes until the bot restarts."
+                "**Heroku Restart**\n\nYenidən yükləmə uğurla başladıldı! Bot yenidən işə salınana qədər 1-2 dəqiqə gözləyin."
             )
             return
         except Exception as err:
             await response.edit(
-                "Something went wrong while initiating reboot! Please try again later or check logs for more info."
-            )
+                "Yenidən yükləməyə başlayarkən xəta baş verdi! Lütfən, sonra yenidən cəhd edin və ya əlavə məlumat üçün qeydləri yoxlayın."
+             )
             return
     else:
         served_chats = []
@@ -422,8 +422,8 @@ async def restart_(_, message):
             try:
                 await app.send_message(
                     x,
-                    f"{MUSIC_BOT_NAME} has just restarted herself. Sorry for the issues.\n\nStart playing after 10-15 seconds again.",
-                )
+                    f"{MUSIC_BOT_NAME} indicə özünü yenidən işə saldı. Problemlərə görə üzr istəyirik.\n\n10-15 saniyədən sonra yenidən oynamağa başlayın.",
+                 )
                 await remove_active_chat(x)
                 await remove_active_video_chat(x)
             except Exception:
@@ -457,6 +457,6 @@ async def restart_(_, message):
         except:
             pass
         await response.edit(
-            "Reboot has been initiated successfully! Wait for 1 - 2 minutes until the bot restarts."
+            "Yenidən yükləmə uğurla başladıldı! Bot yenidən başlayana qədər 1-2 dəqiqə gözləyin."
         )
-        os.system(f"kill -9 {os.getpid()} && bash start")
+        os.system(f"kill -9 {os.getpid()} && Mən İşləyirəm hohohoyy")
