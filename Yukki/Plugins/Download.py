@@ -18,18 +18,18 @@ from Yukki.Utilities.download import get_formats, get_type
 user_time = {}
 flex = {}
 
-__MODULE__ = "Global Ban"
+__MODULE__ = "Qlobal qadağa"
 __HELP__ = """
 
-**Note:**
-Only for Sudo Users.
+**Qeyd:**
+ Yalnız Sudo İstifadəçiləri üçün.
 
-/gban [Username or Reply to a user]
-- Ban a user globally in Bot's Served Chats and prevents user from using bot commands.
+ /gban [İstifadəçi adı və ya istifadəçiyə cavab]
+ - İstifadəçini Botun Xidmət edilən Çatlarında qlobal olaraq qadağan edir və istifadəçinin bot əmrlərindən istifadə etməsinə mane olur.
 
-/ungban [Username or Reply to a user]
-- Remove a user from Bot's GBan List.
-"""
+/ungban [İstifadəçi adı və ya istifadəçiyə cavab]
+ - İstifadəçini Botun GBan Siyahısından çıxarın.
+ """
 
 
 @app.on_callback_query(filters.regex("close"))
@@ -71,11 +71,11 @@ async def ytdata(_, CallbackQuery):
 
 
 inl = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text="Downloading......", callback_data=f"down")]]
+    [[InlineKeyboardButton(text="Yüklənir......", callback_data=f"down")]]
 )
 
 upl = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text="Uploading......", callback_data=f"down")]]
+    [[InlineKeyboardButton(text="Yüklənir......", callback_data=f"down")]]
 )
 
 
@@ -83,7 +83,7 @@ def inl_mark(videoid, user_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text="Download or Upload Failed......", callback_data=f"down"
+                text="Endirmə və ya yükləmə uğursuz oldu......", callback_data=f"down"
             )
         ],
         [
