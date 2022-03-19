@@ -195,7 +195,7 @@ async def del_cmd(_, message):
         _playlist = await get_playlist_names(message.from_user.id, genre)
     if not _playlist:
         await message.reply_text(
-            f"You have no Playlist on {MUSIC_BOT_NAME}'s Server"
+            f"Sizin {MUSIC_BOT_NAME} serverində pleylistiniz yoxdur"
         )
     else:
         titlex = []
@@ -210,19 +210,19 @@ async def del_cmd(_, message):
                 )
                 if deleted:
                     return await message.reply_text(
-                        f"**Deleted the {count} music in playlist**"
+                        f"**Pleylistdəki {count} musiqi silindi**"
                     )
                 else:
                     return await message.reply_text(
-                        f"**No such saved music in playlist.**"
+                        f"**Pleylistdə belə saxlanmış musiqi yoxdur.**"
                     )
-        await message.reply_text("You have no such music in Playlist.")
+        await message.reply_text("Pleylistinizdə belə musiqi yoxdur.")
 
 
 @app.on_message(filters.command("delgroupplaylist") & filters.group)
 @AdminRightsCheck
 async def delgroupplaylist(_, message):
-    usage = f"Usage:\n\n/delgroupplaylist [Genre] [Numbers between 1-30] ( to delete a particular music in playlist )\n\nor\n\n /delgroupplaylist [Genre] all ( to delete whole playlist )\n\n**Genres:-**\n{' | '.join(options_Genre)}"
+    usage = f"İstifadə:\n\n/delgroupplaylist [Janr] [1-30 arası rəqəmlər] ( pleylistdəki müəyyən musiqini silmək üçün )\n\nvə ya\n\n /delgroupplaylist [Janre] hamısı ( bütün çalğı siyahısını silmək üçün )\  n\n**Janrlar:-**\n{' | '.join(options_Genre)}"
     if len(message.command) < 3:
         return await message.reply_text(usage)
     genre = message.text.split(None, 2)[1].strip()
@@ -236,14 +236,14 @@ async def delgroupplaylist(_, message):
     if str(count) == "all":
         buttons = delete_playlist_markuup("Group", genre)
         return await message.reply_text(
-            f"Confirmation!!\nYou sure you want to delete Group's whole {genre} playlist?",
+            f"Təsdiq!\nQrupun bütün {genre} pleylistini silmək istədiyinizə əminsiniz?",
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     else:
         _playlist = await get_playlist_names(message.chat.id, genre)
     if not _playlist:
         await message.reply_text(
-            f"You have no Playlist on {MUSIC_BOT_NAME}'s Server"
+            f"Sizin {MUSIC_BOT_NAME} serverində pleylistiniz yoxdur"
         )
     else:
         titlex = []
@@ -256,13 +256,13 @@ async def delgroupplaylist(_, message):
                 deleted = await delete_playlist(message.chat.id, note, genre)
                 if deleted:
                     return await message.reply_text(
-                        f"**Deleted the {count} music in group's playlist**"
+                        f"**Qrupun pleylistindəki {count} musiqi silindi**"
                     )
                 else:
                     return await message.reply_text(
-                        f"**No such saved music in Group playlist.**"
+                        f"**Qrup pleylistində belə saxlanmış musiqi yoxdur.**"
                     )
-        await message.reply_text("You have no such music in Playlist.")
+        await message.reply_text("Pleylistinizdə belə musiqi yoxdur.")
 
 
 @app.on_callback_query(filters.regex(pattern=r"show_genre"))
