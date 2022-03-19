@@ -175,7 +175,7 @@ async def admins(_, message: Message):
                 )
             elif str(finxx) == "s1s":
                 mystic = await message.reply_text(
-                    "Skipped.. Changing to next Video Stream."
+                    "Atlandı.. Növbəti Video Yayımına keçid."
                 )
                 afk = videoid
                 read = (str(videoid)).replace("s1s_", "", 1)
@@ -187,7 +187,7 @@ async def admins(_, message: Message):
                         await skip_video_stream(chat_id, videoid, 720, mystic)
                     except Exception as e:
                         return await mystic.edit(
-                            f"Error while changing video stream.\n\nPossible Reason:- {e}"
+                            f"Video axını dəyişdirərkən xəta.\n\nMümkün Səbəb:- {e}"
                         )
                     buttons = secondary_markup2("Smex1", message.from_user.id)
                     mention = db_mem[afk]["username"]
@@ -196,7 +196,7 @@ async def admins(_, message: Message):
                         photo="Utils/Telegram.JPEG",
                         reply_markup=InlineKeyboardMarkup(buttons),
                         caption=(
-                            f"<b>__Skipped Video Chat__</b>\n\n👤**__Requested by:__** {mention}"
+                            f"<b>__Video Çatı Atladı__</b>\n\n👤**__Tələb:__** {mention}"
                         ),
                     )
                     await mystic.delete()
@@ -210,7 +210,7 @@ async def admins(_, message: Message):
                     nrs, ytlink = await get_m3u8(videoid)
                     if nrs == 0:
                         return await mystic.edit(
-                            "Failed to fetch Video Formats.",
+                            "Video Formatlarını əldə etmək alınmadı.",
                         )
                     try:
                         await skip_video_stream(
@@ -218,7 +218,7 @@ async def admins(_, message: Message):
                         )
                     except Exception as e:
                         return await mystic.edit(
-                            f"Error while changing video stream.\n\nPossible Reason:- {e}"
+                            f"Video axını dəyişdirərkən xəta.\n\nMümkün Səbəb:- {e}"
                         )
                     theme = await check_theme(chat_id)
                     c_title = message.chat.title
@@ -235,10 +235,10 @@ async def admins(_, message: Message):
                     final_output = await message.reply_photo(
                         photo=thumb,
                         reply_markup=InlineKeyboardMarkup(buttons),
-                        caption=(
-                            f"<b>__Skipped Video Chat__</b>\n\n🎥<b>__Started Video Playing:__ </b> [{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n👤**__Requested by:__** {mention}"
-                        ),
-                    )
+                        başlıq=(
+                             f"<b>__Video Çatı Atladı__</b>\n\n🎥<b>__Video Oxumağa Başladı:__ </b> [{title[:25]}](https://www.youtube.com/watch  ?v={videoid}) \n👤**__Tələb:__** {mention}"
+                         ),
+                     )
                     await mystic.delete()
                     os.remove(thumb)
                     await start_timer(
