@@ -261,7 +261,7 @@ async def ban_globally(_, message):
             for chat in chats:
                 served_chats.append(int(chat["chat_id"]))
             m = await message.reply_text(
-                f"**Initializing Global Ban on {user.mention}**\n\nExpected Time : {len(served_chats)}"
+                f"**{user.mention} üçün Qlobal Qadağanın başlanğıcı qoyulur**\n\nGözlənilən vaxt: {len(served_chats)}"
             )
             number_of_chats = 0
             for sex in served_chats:
@@ -274,13 +274,13 @@ async def ban_globally(_, message):
                 except Exception:
                     pass
             ban_text = f"""
-__**New Global Ban on {MUSIC_BOT_NAME}**__
+__**{MUSIC_BOT_NAME} üçün yeni qlobal qadağa**__
 
-**Origin:** {message.chat.title} [`{message.chat.id}`]
-**Sudo User:** {from_user.mention}
-**Banned User:** {user.mention}
-**Banned User ID:** `{user.id}`
-**Chats:** {number_of_chats}"""
+ **Mənşə:**{message.chat.title} [`{message.chat.id}`]
+**Sudo İstifadəçisi:** {from_user.mention}
+ **Qadağan edilmiş İstifadəçi:** {user.mention}
+ **Qadağan edilmiş İstifadəçi ID-si:** `{user.id}`
+ **Söhbətlər:** {number_of_chats}"""
             try:
                 await m.delete()
             except Exception:
@@ -296,15 +296,15 @@ __**New Global Ban on {MUSIC_BOT_NAME}**__
     mention = message.reply_to_message.from_user.mention
     sudoers = await get_sudoers()
     if user_id == from_user_id:
-        await message.reply_text("You want to block yourself? How Fool!")
+        await message.reply_text("Özünüzü bloklamaq istəyirsiniz? Necə də axmaq!")
     elif user_id == BOT_ID:
-        await message.reply_text("Should i block myself? Lmao Ded!")
+        await message.reply_text("Özümü bloklamalıyam? Lmao Ded!")
     elif user_id in sudoers:
-        await message.reply_text("You want to block a sudo user? KIDXZ")
+        await message.reply_text("Sudo istifadəçisini bloklamaq istəyirsiniz? KIDXZ")
     else:
         is_gbanned = await is_gbanned_user(user_id)
         if is_gbanned:
-            await message.reply_text("Already Gbanned.")
+            await message.reply_text("Artıq banlanıb.")
         else:
             await add_gban_user(user_id)
             served_chats = []
@@ -312,8 +312,7 @@ __**New Global Ban on {MUSIC_BOT_NAME}**__
             for chat in chats:
                 served_chats.append(int(chat["chat_id"]))
             m = await message.reply_text(
-                f"**Initializing Gobal Ban on {mention}**\n\nExpected Time : {len(served_chats)}"
-            )
+                f"**Qlobal Qadağanın {mention}** üzrə Başlanılması Gözlənilən Vaxtda : {len(served_chats)}" )
             number_of_chats = 0
             for sex in served_chats:
                 try:
@@ -325,13 +324,13 @@ __**New Global Ban on {MUSIC_BOT_NAME}**__
                 except Exception:
                     pass
             ban_text = f"""
-__**New Global Ban on {MUSIC_BOT_NAME}**__
+__**{MUSIC_BOT_NAME} üçün yeni qlobal qadağa**__
 
-**Origin:** {message.chat.title} [`{message.chat.id}`]
-**Sudo User:** {from_user_mention}
-**Banned User:** {mention}
-**Banned User ID:** `{user_id}`
-**Chats:** {number_of_chats}"""
+ **Mənşə:** {message.chat.title} [`{message.chat.id}`]
+ **Sudo İstifadəçisi:** {from_user_mention}
+ **Qadağan edilmiş İstifadəçi:** {qeyd}
+ **Qadağan edilmiş İstifadəçi ID-si:** `{user_id}`
+ **Söhbətlər:** {söhbətlərin_sayı}"""
             try:
                 await m.delete()
             except Exception:
@@ -348,7 +347,7 @@ async def unban_globally(_, message):
     if not message.reply_to_message:
         if len(message.command) != 2:
             await message.reply_text(
-                "**Usage:**\n/ungban [USERNAME | USER_ID]"
+                "**İstifadə:**\n/ungban [USERNAME | USER_ID]"
             )
             return
         user = message.text.split(None, 1)[1]
