@@ -9,7 +9,7 @@ from Yukki.Decorators.admins import AdminActual
 from Yukki.Utilities.changers import (alpha_to_int, int_to_alpha,
                                       time_to_seconds)
 
-__MODULE__ = "icazəli İstifadəçiləri"
+__MODULE__ = "İcazəli İstifadəçilər"
 __HELP__ = """
 
 **Qeyd:**
