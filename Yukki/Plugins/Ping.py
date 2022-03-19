@@ -12,7 +12,7 @@ from Yukki.Utilities.ping import get_readable_time
 __MODULE__ = "Ping"
 __HELP__ = """
 
-/ping - Check if Bot is alive or not.
+/ping - Botun sağ olub olmadığını yoxlayın.
 """
 
 
@@ -22,7 +22,7 @@ async def bot_sys_stats():
     mem = psutil.virtual_memory().percent
     disk = psutil.disk_usage("/").percent
     stats = f"""
-Uptime: {get_readable_time((bot_uptime))}
+İş vaxtı: {get_readable_time((bot_uptime))}
 CPU: {cpu}%
 RAM: {mem}%
 Disk: {disk}%"""
@@ -40,5 +40,5 @@ async def ping(_, message):
     end = datetime.now()
     resp = (end - start).microseconds / 1000
     await response.edit_text(
-        f"**Pong!**\n`⚡{resp} ms`\n\n<b><u>{MUSIC_BOT_NAME} System Stats:</u></b>{uptime}"
+        f"**Pong!**\n`⚡{resp} ms`\n\n<b><u>{MUSIC_BOT_NAME} System Statistika:</u></b>{uptime}"
     )
