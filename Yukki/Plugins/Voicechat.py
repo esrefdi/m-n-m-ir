@@ -109,7 +109,7 @@ async def activevc(_, message: Message):
 
         msg = "**Növbəyə qoyulmuş Siyahı**\n\n"
         msg += "**Hazırda oynayır:**"
-         msg += "\n▶️" + current_playing[:30]
+         msg += "\n▶️ + current_playing[:30]"
         msg += f"\n   ╚By:- {user_name}"
         msg += f"\n ╚Müddət:- `{duration_min}` dəqiqədən qalan `{dur_left}` dəqiqə."
         fetched.pop(0)
