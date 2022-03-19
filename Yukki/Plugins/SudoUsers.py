@@ -448,7 +448,7 @@ async def broadcast_message_pin_silent(_, message):
         except Exception:
             pass
     await message.reply_text(
-        f"**Broadcasted Message In {sent} Chats and {pin} Pins.**"
+        f"** Yayımlanan Mesaj {sent} Söhbətlər və {pin} sancaqlar.**"
     )
 
 
@@ -478,12 +478,12 @@ async def broadcast_message_pin_loud(_, message):
             except Exception:
                 pass
         await message.reply_text(
-            f"**Broadcasted Message In {sent}  Chats with {pin} Pins.**"
+            f"** Yayımlanan Mesaj {sent}  {pin} sancaqları ilə söhbətlər.**"
         )
         return
     if len(message.command) < 2:
         await message.reply_text(
-            "**Usage**:\n/broadcast [MESSAGE] or [Reply to a Message]"
+            "**İstifadə**:\n/broadcast [MESSAGE] və ya [Mesajı Cavab]"
         )
         return
     text = message.text.split(None, 1)[1]
@@ -506,7 +506,7 @@ async def broadcast_message_pin_loud(_, message):
         except Exception:
             pass
     await message.reply_text(
-        f"**Broadcasted Message In {sent} Chats and {pin} Pins.**"
+        f"** Yayımlanan Mesaj {sent} Söhbətlər və {pin} sancaqlar.**"
     )
 
 
@@ -529,11 +529,11 @@ async def broadcast(_, message):
                 sent += 1
             except Exception:
                 pass
-        await message.reply_text(f"**Broadcasted Message In {sent} Chats.**")
+        await message.reply_text(f"**Yayımlanan Mesaj {sent} Çatlarda.**")
         return
     if len(message.command) < 2:
         await message.reply_text(
-            "**Usage**:\n/broadcast [MESSAGE] or [Reply to a Message]"
+            "**İstifadə**:\n/broadcast [MESSAGE] və ya [Mesajı Cavab]"
         )
         return
     text = message.text.split(None, 1)[1]
@@ -549,7 +549,7 @@ async def broadcast(_, message):
             sent += 1
         except Exception:
             pass
-    await message.reply_text(f"**Broadcasted Message In {sent} Chats.**")
+    await message.reply_text(f"**Yayımlanan Mesaj {sent} Çatlarda.**")
 
 
 # Clean
@@ -563,4 +563,4 @@ async def clean(_, message):
     shutil.rmtree(dir1)
     os.mkdir(dir)
     os.mkdir(dir1)
-    await message.reply_text("Successfully cleaned all **temp** dir(s)!")
+    await message.reply_text("Bütün **temp** dir(lər)i uğurla təmizlədi!")
