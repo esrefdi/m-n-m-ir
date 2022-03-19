@@ -11,11 +11,11 @@ from Yukki import MUSIC_BOT_NAME, app
 __MODULE__ = "Lyrics"
 __HELP__ = """
 
-/Lyrics [Music Name]
-- Searches Lyrics for the particular Music on web.
+/Lyrics [Musiqi Adı]
+ - Vebdə xüsusi Musiqi üçün Lirikləri axtarır.
 
-**Note**:
-Inline button of Lyrics has some bugs. Searches only 50% results. You can use command instead if you want lyrics for any playing music.
+**Qeyd**:
+ Lirikanın daxili düyməsində bəzi səhvlər var.  Yalnız 50% nəticələri axtarır.  İstənilən musiqi üçün sözlər istəsəniz, əvəzinə əmrdən istifadə edə bilərsiniz.
 
 """
 
@@ -28,7 +28,7 @@ async def lyricssex(_, CallbackQuery):
         id, user_id = callback_request.split("|")
     except Exception as e:
         return await CallbackQuery.message.edit(
-            f"Error Occured\n**Possible reason could be**:{e}"
+            f"Xəta baş verdi\n**Mümkün səbəb** ola bilər:{e}"
         )
     url = f"https://www.youtube.com/watch?v={id}"
     print(url)
@@ -38,7 +38,7 @@ async def lyricssex(_, CallbackQuery):
             title = result["title"]
     except Exception as e:
         return await CallbackQuery.answer(
-            "Sound not found. Youtube issues.", show_alert=True
+            "Səs tapılmadı. Youtube problemləri.", show_alert=True
         )
     x = "OXaVabSRKQLqwpiYOn-E4Y7k3wj-TNdL5RfDPXlnXhCErbcqVvdCF-WnMR5TBctI"
     y = lyricsgenius.Genius(x)
@@ -47,7 +47,7 @@ async def lyricssex(_, CallbackQuery):
     S = y.search_song(t, get_full_info=False)
     if S is None:
         return await CallbackQuery.answer(
-            "Lyrics not found :p", show_alert=True
+            "Lirika tapılmadı :p", show_alert=True
         )
     await CallbackQuery.message.delete()
     userid = CallbackQuery.from_user.id
@@ -55,13 +55,13 @@ async def lyricssex(_, CallbackQuery):
     xxx = f"""
 **Lyrics Search Powered By {MUSIC_BOT_NAME}**
 
-**Searched By:-** {usr}
-**Searched Song:-** __{title}__
+**Axtarılan:-** {usr}
+ **Axtarılan Mahnı:-** __{title}__
 
-**Found Lyrics For:-** __{S.title}__
-**Artist:-** {S.artist}
+ **Found Lyrics For:-** __{S.title}__
+ **Rəssam:-** {S.artist}
 
-**__Lyrics:__**
+ **__ Mahnı sözləri:__**
 
 {S.lyrics}"""
     if len(xxx) > 4096:
@@ -81,8 +81,8 @@ async def lyricssex(_, CallbackQuery):
 @app.on_message(filters.command("lyrics"))
 async def lrsearch(_, message: Message):
     if len(message.command) < 2:
-        return await message.reply_text("**Usage:**\n\n/lyrics [ Music Name]")
-    m = await message.reply_text("Searching Lyrics")
+        return await message.reply_text("**İstifadə:**\n\n/lyrics [ Musiqi Adı]")
+    m = await message.reply_text("Mahnı sözləri axtarılır")
     query = message.text.split(None, 1)[1]
     x = "OXaVabSRKQLqwpiYOn-E4Y7k3wj-TNdL5RfDPXlnXhCErbcqVvdCF-WnMR5TBctI"
     y = lyricsgenius.Genius(x)
@@ -93,11 +93,11 @@ async def lrsearch(_, message: Message):
     xxx = f"""
 **Lyrics Search Powered By {MUSIC_BOT_NAME}**
 
-**Searched Song:-** __{query}__
-**Found Lyrics For:-** __{S.title}__
-**Artist:-** {S.artist}
+**Axtarılan Mahnı:-** __{query}__
+ **Found Lyrics For:-** __{S.title}__
+ **Rəssam:-** {S.artist}
 
-**__Lyrics:__**
+ **__ Mahnı sözləri:__**
 
 {S.lyrics}"""
     if len(xxx) > 4096:
