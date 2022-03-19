@@ -328,10 +328,10 @@ async def start_command(_, message):
                 [
                     [
                         InlineKeyboardButton(
-                            text="🎥 Watch Youtube Video", url=f"{link}"
+                            text="🎥 Youtube Videosunu İzləyin",url=f"{link}"
                         ),
                         InlineKeyboardButton(
-                            text="🔄 Close", callback_data="close"
+                            text="🔄 Bağlayın", callback_data="close"
                         ),
                     ],
                 ]
@@ -350,7 +350,7 @@ async def start_command(_, message):
                 umention = f"[{sender_name}](tg://user?id={int(sender_id)})"
                 return await LOG_CLIENT.send_message(
                     LOG_GROUP_ID,
-                    f"{message.from_user.mention} has just started bot to check <code>VIDEO INFORMATION</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
+                    f"{message.from_user.mention} <code>VİDEO MƏLUMATI</code>-u yoxlamaq üçün botu indicə işə saldı\n\n**İSTİFADƏÇİ İDYASI:** {sender_id}\n**İSTİFADƏÇİ ADI:** {sender_name}",
                 )
             return
     out = private_panel()
@@ -364,7 +364,7 @@ async def start_command(_, message):
         umention = f"[{sender_name}](tg://user?id={int(sender_id)})"
         return await LOG_CLIENT.send_message(
             LOG_GROUP_ID,
-            f"{message.from_user.mention} has just started Bot.\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
+            f"{message.from_user.mention} Botu indicə işə salıb.\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
         )
     return
 
@@ -373,11 +373,11 @@ async def help_parser(name, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
-        """Hello {first_name},
+        """Salam {first_name},
 
-Click on the buttons for more information.
+ Ətraflı məlumat üçün düymələrə klikləyin.
 
-All commands can be used with: /
+ Bütün əmrlər aşağıdakılarla istifadə edilə bilər: /
 """.format(
             first_name=name
         ),
