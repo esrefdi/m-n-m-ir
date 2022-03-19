@@ -229,11 +229,11 @@ async def initiate_bot():
     console.print(f"\n[red]Stopping Bot")
 
 
-home_text_pm = f"""Hello ,
-My name is {BOT_NAME}.
-A Telegram Music+Video Streaming bot with some useful features.
+home_text_pm = f"""Salam,
+ Mənim adım {BOT_NAME}.
+ Bəzi faydalı xüsusiyyətləri olan Telegram Musiqi+Video Yayım botu.
 
-All commands can be used with: / """
+ Bütün əmrlər aşağıdakılarla istifadə edilə bilər: / """
 
 
 @app.on_message(filters.command("help") & filters.private)
@@ -312,18 +312,18 @@ async def start_command(_, message):
                 link = result["link"]
                 published = result["publishedTime"]
             searched_text = f"""
-🔍__**Video Track Information**__
+ 🔍__**Video Track Məlumatı**__
 
-❇️**Title:** {title}
+ ❇️**Başlıq:** {başlıq}
 
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-⏰**Published Time:** {published}
-🎥**Channel Name:** {channel}
-📎**Channel Link:** [Visit From Here]({channellink})
-🔗**Video Link:** [Link]({link})
+ ⏳**Müddət:** {duration} Dəq
+ 👀**Baxışlar:** `{views}`
+ ⏰**Yayımlanma vaxtı:** {published}
+ 🎥**Kanal Adı:** {channel}
+ 📎**Kanal Linki:** [Buradan Ziyarət Edin]({channellink})
+ 🔗**Video Linki:** [Link]({link})
 
-⚡️ __Searched Powered By {BOT_NAME}__"""
+ ⚡️ __Axtarılmışdır {BOT_NAME}__"""
             key = InlineKeyboardMarkup(
                 [
                     [
