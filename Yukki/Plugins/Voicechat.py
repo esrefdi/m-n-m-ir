@@ -21,21 +21,21 @@ loop = asyncio.get_event_loop()
 __MODULE__ = "Join/Leave"
 __HELP__ = """
 
-**Note:**
-Only for Sudo Users
+**Qeyd:**
+ Yalnız Sudo İstifadəçiləri üçün
 
 
-/joinassistant [Chat Username or Chat ID]
-- Join assistant to a group.
+ /joinassistant [Söhbət İstifadəçi adı və ya Söhbət ID-si]
+ - Qrupa köməkçiyə qoşulun.
 
 
-/leaveassistant [Chat Username or Chat ID]
-- Assistant will leave the particular group.
+ /leaveassistant [Söhbət İstifadəçi adı və ya Söhbət ID-si]
+ - Assistent müəyyən qrupdan ayrılacaq.
 
 
-/leavebot [Chat Username or Chat ID]
-- Bot will leave the particular chat.
-"""
+/leavebot [Söhbət İstifadəçi adı və ya Söhbət ID-si]
+ - Bot xüsusi söhbəti tərk edəcək.
+ """
 
 @app.on_callback_query(filters.regex("gback_list_chose_stream"))
 async def gback_list_chose_stream(_, CallbackQuery):
