@@ -155,19 +155,19 @@ async def vardel_(client, message):
              )
         elif HEROKU_API_KEY == "" or HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\n<b>Make sure to add both</b> `HEROKU_API_KEY` **and** `HEROKU_APP_NAME` <b>vars correctly in order to be able to update remotely!</b>"
-            )
+                "<b>HEROKU TƏTBİQİ AŞPAQLANIB!</b>\n\n<b>Hər ikisini</b> `HEROKU_API_KEY` **və** `HEROKU_APP_NAME` <b>varları düzgün əlavə etdiyinizə əmin olun.  uzaqdan yeniləyin!</b>"
+             )
         try:
             Heroku = heroku3.from_key(HEROKU_API_KEY)
             happ = Heroku.app(HEROKU_APP_NAME)
         except BaseException:
             return await message.reply_text(
-                " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
+                "Lütfən, Heroku API Açarınızın, Proqramınızın adının heroku-da düzgün konfiqurasiya edildiyinə əmin olun"
             )
         heroku_config = happ.config()
         if check_var in heroku_config:
             await message.reply_text(
-                f"**Heroku Var Deletion:**\n\n`{check_var}` has been deleted successfully."
+                f"**Heroku Var Silinməsi:**\n\n`{check_var}` uğurla silindi."
             )
             del heroku_config[check_var]
         else:
@@ -180,8 +180,7 @@ async def vardel_(client, message):
         if not output[0]:
             return await message.reply_text("No such Var")
         else:
-            return await message.reply_text(f".env Var Deletion:\n\n`{check_var}` has been deleted successfully. To restart the bot touch /restart command.")
-
+            return await message.reply_text(f".env Var Silinməsi:\n\n`{check_var}` uğurla silindi. Botu yenidən başlatmaq üçün /restart əmrini icra edin.")
 
 @app.on_message(filters.command("set_var") & filters.user(SUDOERS))
 async def set_var(client, message):
@@ -193,28 +192,28 @@ async def set_var(client, message):
     if await is_heroku():
         if HEROKU_API_KEY == "" and HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\nIn order to update your app, you need to set up the `HEROKU_API_KEY` and `HEROKU_APP_NAME` vars respectively!"
-            )
+                "<b>HEROKU TƏTBİQİ ALINDI!</b>\n\nTətbiqinizi yeniləmək üçün müvafiq olaraq `HEROKU_API_KEY` və `HEROKU_APP_NAME` variantlarını quraşdırmalısınız!"
+             )
         elif HEROKU_API_KEY == "" or HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\n<b>Make sure to add both</b> `HEROKU_API_KEY` **and** `HEROKU_APP_NAME` <b>vars correctly in order to be able to update remotely!</b>"
-            )
+                "<b>HEROKU TƏTBİQİ AŞPAQLANIB!</b>\n\n<b>Hər ikisini</b> `HEROKU_API_KEY` **və** `HEROKU_APP_NAME` <b>varları düzgün əlavə etdiyinizə əmin olun.  uzaqdan yeniləyin!</b>"
+             )
         try:
             Heroku = heroku3.from_key(HEROKU_API_KEY)
             happ = Heroku.app(HEROKU_APP_NAME)
         except BaseException:
             return await message.reply_text(
-                " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
+                "Lütfən, Heroku API Açarınızın, Proqramınızın adının heroku-da düzgün konfiqurasiya edildiyinə əmin olun"
             )
         heroku_config = happ.config()
         if to_set in heroku_config:
             await message.reply_text(
-                f"**Heroku Var Updation:**\n\n`{to_set}` has been updated successfully. Bot will Restart Now."
+                f"**Heroku Var Yeniləmə:**\n\n`{to_set}` uğurla yeniləndi. Bot İndi Yenidən Başlayacaq."
             )
         else:
             await message.reply_text(
-                f"Added New Var with name `{to_set}`. Bot will Restart Now."
-            )
+                f"`{to_set}` adlı Yeni Var əlavə edildi. Bot İndi Yenidən Başlayacaq."
+             )
         heroku_config[to_set] = value
     else:
         path = dotenv.find_dotenv()
@@ -222,7 +221,7 @@ async def set_var(client, message):
             return await message.reply_text(".env not found.")
         output = dotenv.set_key(path, to_set, value)
         if dotenv.get_key(path, to_set):
-            return await message.reply_text(f"**.env Var Updation:**\n\n`{to_set}`has been updated successfully. To restart the bot touch /restart command.")
+            return await message.reply_text(f"**.env Var Yeniləmə:**\n\n`{to_set}` uğurla yeniləndi. Botu yenidən başlatmaq üçün /restart əmrini icra edin.")
         else:
             return await message.reply_text(f"**.env dəyişən əlavə edilməsi:**\n\n`{to_set}` has been added sucsessfully. To restart the bot touch /restart command.")
 
