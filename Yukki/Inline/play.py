@@ -283,7 +283,7 @@ def audio_timer_markup_start(videoid, user_id, current_time, total_time):
             InlineKeyboardButton(text="⏭️", callback_data=f"skipcb"),
             InlineKeyboardButton(text="⏹️", callback_data=f"stopcb"),
         ],
-        [InlineKeyboardButton(text="🗑 Close Menu", callback_data=f"close")],
+        [InlineKeyboardButton(text="🗑 Menyunu bağlayın", callback_data=f"close")],
     ]
     return buttons
 
