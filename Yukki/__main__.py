@@ -229,11 +229,11 @@ async def initiate_bot():
     console.print(f"\n[red]Stopping Bot")
 
 
-home_text_pm = f"""Hello ,
-My name is {BOT_NAME}.
-A Telegram Music+Video Streaming bot with some useful features.
+home_text_pm = f"""Salam,
+ Mənim adım {BOT_NAME}.
+ Bəzi faydalı xüsusiyyətləri olan Telegram Musiqi+Video Yayım botu.
 
-All commands can be used with: / """
+ Bütün əmrlər aşağıdakılarla istifadə edilə bilər: / """
 
 
 @app.on_message(filters.command("help") & filters.private)
@@ -287,8 +287,8 @@ async def start_command(_, message):
                 umention = f"[{sender_name}](tg://user?id={int(sender_id)})"
                 return await LOG_CLIENT.send_message(
                     LOG_GROUP_ID,
-                    f"{message.from_user.mention} has just started bot to check <code>SUDOLIST</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
-                )
+                    f"{message.from_user.mention} <code>SUDOLIST</code> yoxlamaq üçün botu indicə işə saldı\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
+                 )
         if name == "help":
             text, keyboard = await help_parser(message.from_user.mention)
             await message.delete()
@@ -298,7 +298,7 @@ async def start_command(_, message):
                 reply_markup=keyboard,
             )
         if name[0] == "i":
-            m = await message.reply_text("🔎 Fetching Info!")
+            m = await message.reply_text("🔎 Məlumat əldə edilir!")
             query = (str(name)).replace("info_", "", 1)
             query = f"https://www.youtube.com/watch?v={query}"
             results = VideosSearch(query, limit=1)
@@ -312,16 +312,16 @@ async def start_command(_, message):
                 link = result["link"]
                 published = result["publishedTime"]
             searched_text = f"""
-🔍__**Video Track Information**__
+🔍__**Video Track Məlumatı**__
 
-❇️**Title:** {title}
+ ❇️**Başlıq:** {title}
 
-⏳**Duration:** {duration} Mins
-👀**Views:** `{views}`
-⏰**Published Time:** {published}
-🎥**Channel Name:** {channel}
-📎**Channel Link:** [Visit From Here]({channellink})
-🔗**Video Link:** [Link]({link})
+ ⏳**Müddət:** {duration} Dəq
+ 👀**Baxışlar:** `{views}`
+ ⏰**Yayımlanma vaxtı:** {published}
+ 🎥**Kanal Adı:** {channel}
+ 📎**Kanal Linki:** [Buradan Ziyarət Edin]({channellink})
+ 🔗**Video Linki:** [Link]({link})
 
 ⚡️ __Searched Powered By {BOT_NAME}__"""
             key = InlineKeyboardMarkup(
