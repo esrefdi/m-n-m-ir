@@ -13,17 +13,17 @@ __MODULE__ = "İcazəli İstifadəçilər"
 __HELP__ = """
 
 **Qeyd:**
- -Auth istifadəçiləri hətta Admin Hüquqları olmadan da Səsli Söhbətləri atlaya, dayandıra, dayandıra və davam etdirə bilərlər.
+ - İcazəli istifadəçiləri hətta Admin Hüquqları olmadan da Səsli Söhbətləri atlaya, dayandıra,və davam etdirə bilərlər.
 
 
 /auth [İstifadəçi adı və ya mesaja cavab]
- - Qrupun AUTH SİYAHISINA istifadəçi əlavə edin.
+ - İstifadəçini Qrupun icazəli siyahısına əlavə et.
 
 /unauth [İstifadəçi adı və ya mesaja cavab]
- - Qrupun AUTH LIST-dən istifadəçini çıxarın.
+ - İstifadəçini Qrupun icazəli siyahısından sil.
 
 /authusers 
-- Qrupun AUTH SİYAHISINI yoxlayın.
+- Qrupun İcazəli SİYAHISINI yoxlayın.
 """
 
 
@@ -33,7 +33,7 @@ async def auth(_, message: Message):
     if not message.reply_to_message:
         if len(message.command) != 2:
             await message.reply_text(
-                "Reply to a user's message or give username/user_id."
+                "İstifadəçinin mesajına cavab verin və ya istifadəçi adı/user_id verin."
             )
             return
         user = message.text.split(None, 1)[1]
