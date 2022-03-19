@@ -11,7 +11,7 @@ from Yukki import ASSISTANT_PREFIX, SUDOERS, app, random_assistant
 from Yukki.Database import get_assistant, save_assistant
 from Yukki.Utilities.assistant import get_assistant_details
 
-__MODULE__ = "köməkçi"
+__MODULE__ = "Assistant"
 __HELP__ = f"""
 
 
@@ -53,7 +53,7 @@ ass_num_list = ["1", "2", "3", "4", "5"]
 
 @app.on_message(filters.command("changeassistant") & filters.user(SUDOERS))
 async def assis_change(_, message: Message):
-    usage = f"**İstifadə:**\n/dəyişiklik köməkçisi [ASS_NO]\n\nOnlardan seçin\n{' | '.join(ass_num_list)}"
+    usage = f"**İstifadə:**\n/changeassistant Assistant  [ASS_NO]\n\nBunlardan Birini seçin\n{' | '.join(ass_num_list)}"
     if len(message.command) != 2:
         return await message.reply_text(usage)
     num = message.text.split(None, 1)[1].strip()
@@ -94,7 +94,7 @@ async def assis_change(_, message: Message):
     _assistant = await get_assistant(message.chat.id, "assistant")
     if not _assistant:
         await message.reply_text(
-            f"**__Yukki Music Bot Assistant Alloted__**\n\nAssistant No. **{ran_ass}**"
+            f"**__Yukki Musiqi Bot Köməkçisi Ayrıldı__**\n\nAssistent No. **{ran_ass}**"
         )
         assis = {
             "saveassistant": ran_ass,
@@ -103,7 +103,7 @@ async def assis_change(_, message: Message):
     else:
         ass = _assistant["saveassistant"]
         return await message.reply_text(
-            f"Pre-Saved Assistant Number {ass} Found.\n\nYou can change Assistant Via /changeassistant"
+            f"Qabaqcadan Yadda Saxlanmış Assistent Nömrəsi {ass}.\n\nSiz /changeassistant Vasitəsilə dəyişə bilərsiniz"
         )
 
 
