@@ -28,29 +28,29 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 __MODULE__ = "Server"
 __HELP__ = f"""
 
-**Note:**
-**Only for Sudo Users**
+**Qeyd:**
+ **Yalnız Sudo İstifadəçiləri üçün**
 
 /get_log
-- Get log of last 100 lines from Heroku.
+- Heroku-dan son 100 sətir qeydini alın.
 
-/get_var
-- Get a config var from Heroku or .env.
+ /get_var
+ - Heroku və ya .env-dən konfiqurasiya var əldə edin.
 
-/del_var
-- Delete any var on Heroku or .env.
+ /del_var
+ - Heroku və ya .env-də hər hansı bir var silin.
 
-/set_var [Var Name] [Value]
-- Set a Var or Update a Var on heroku or .env. Seperate Var and its Value with a space.
+ /set_var [Var Adı] [Dəyər]
+ - Heroku və ya .env-də Var təyin edin və ya Var-ı yeniləyin.  Var və onun dəyərini boşluqla ayırın.
 
 /usage
-- Get Dyno Usage.
+ - Dyno İstifadəsini əldə edin.
 
-/update
-- Update Your Bot.
+ /update
+ - Botunuzu yeniləyin.
 
-/restart 
-- Restart Bot [All downloads, cache, raw files will be cleared too]. 
+ /restart
+ - Botu yenidən başladın [Bütün yükləmələr, keş, xam fayllar da silinəcək].
 """
 
 
@@ -76,27 +76,27 @@ async def log_(client, message):
     if await is_heroku():
         if HEROKU_API_KEY == "" and HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\nIn order to update your app, you need to set up the `HEROKU_API_KEY` and `HEROKU_APP_NAME` vars respectively!"
+                "<b>HEROKU TƏTBİQİ ALINDI!</b>\n\nTətbiqinizi yeniləmək üçün müvafiq olaraq `HEROKU_API_KEY` və `HEROKU_APP_NAME` variantlarını quraşdırmalısınız!"
             )
         elif HEROKU_API_KEY == "" or HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\n<b>Make sure to add both</b> `HEROKU_API_KEY` **and** `HEROKU_APP_NAME` <b>vars correctly in order to be able to update remotely!</b>"
-            )
+                "<b>HEROKU TƏTBİQİ AŞPAQLANIB!</b>\n\n<b>Hər ikisini</b> `HEROKU_API_KEY` **və** `HEROKU_APP_NAME` <b>varları düzgün əlavə etdiyinizə əmin olun.  uzaqdan yeniləyin!</b>"
+             )
     else:
-        return await message.reply_text("Only for Heroku Apps")
+        return await message.reply_text("Yalnız Heroku Proqramları üçün")
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
         happ = Heroku.app(HEROKU_APP_NAME)
     except BaseException:
         return await message.reply_text(
-            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
+            "Lütfən, Heroku API Açarınızın, Proqramınızın adının heroku-da düzgün konfiqurasiya edildiyinə əmin olun"
         )
     data = happ.get_log()
     if len(data) > 1024:
         link = await paste_queue(data)
         url = link + "/index.txt"
         return await message.reply_text(
-            f"Here is the Log of Your App[{HEROKU_APP_NAME}]\n\n[Click Here to checkout Logs]({url})"
+            f"Budur Tətbiqinizin Qeydiyyatı[{HEROKU_APP_NAME}]\n\n[Logları yoxlamaq üçün buraya klikləyin]({url})"
         )
     else:
         return await message.reply_text(data)
@@ -111,23 +111,23 @@ async def varget_(client, message):
     if await is_heroku():
         if HEROKU_API_KEY == "" and HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\nIn order to update your app, you need to set up the `HEROKU_API_KEY` and `HEROKU_APP_NAME` vars respectively!"
+                "<b>HEROKU TƏTBİQİ ALINDI!</b>\n\nTətbiqinizi yeniləmək üçün müvafiq olaraq `HEROKU_API_KEY` və `HEROKU_APP_NAME` variantlarını quraşdırmalısınız!"
             )
         elif HEROKU_API_KEY == "" or HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\n<b>Make sure to add both</b> `HEROKU_API_KEY` **and** `HEROKU_APP_NAME` <b>vars correctly in order to be able to update remotely!</b>"
-            )
+                "<b>HEROKU TƏTBİQİ AŞPAQLANIB!</b>\n\n<b>Hər ikisini</b> `HEROKU_API_KEY` **və** `HEROKU_APP_NAME` <b>varları düzgün əlavə etdiyinizə əmin olun.  uzaqdan yeniləyin!</b>"
+             )
         try:
             Heroku = heroku3.from_key(HEROKU_API_KEY)
             happ = Heroku.app(HEROKU_APP_NAME)
         except BaseException:
             return await message.reply_text(
-                " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
+                "Lütfən, Heroku API Açarınızın, Proqramınızın adının heroku-da düzgün konfiqurasiya edildiyinə əmin olun"
             )
         heroku_config = happ.config()
         if check_var in heroku_config:
             return await message.reply_text(
-                f"**Heroku Config:**\n\n**{check_var}:** `{heroku_config[check_var]}`"
+                f"**Heroku Konfiqurasiyası:**\n\n**{check_var}:** `{heroku_config[check_var]}`"
             )
         else:
             return await message.reply_text("No such Var")
@@ -151,8 +151,8 @@ async def vardel_(client, message):
     if await is_heroku():
         if HEROKU_API_KEY == "" and HEROKU_APP_NAME == "":
             return await message.reply_text(
-                "<b>HEROKU APP DETECTED!</b>\n\nIn order to update your app, you need to set up the `HEROKU_API_KEY` and `HEROKU_APP_NAME` vars respectively!"
-            )
+                "<b>HEROKU TƏTBİQİ ALINDI!</b>\n\nTətbiqinizi yeniləmək üçün müvafiq olaraq `HEROKU_API_KEY` və `HEROKU_APP_NAME` variantlarını quraşdırmalısınız!"
+             )
         elif HEROKU_API_KEY == "" or HEROKU_APP_NAME == "":
             return await message.reply_text(
                 "<b>HEROKU APP DETECTED!</b>\n\n<b>Make sure to add both</b> `HEROKU_API_KEY` **and** `HEROKU_APP_NAME` <b>vars correctly in order to be able to update remotely!</b>"
