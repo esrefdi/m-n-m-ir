@@ -45,7 +45,7 @@ __HELP__ = """
     filters.command(["settheme", f"settheme@{BOT_USERNAME}"]) & filters.group
 )
 async def settheme(_, message):
-    usage = f"This isn't a theme.\n\nSelect from them\n{' | '.join(themes)}\n\nUse 'Random' to get random choice of themes"
+    usage = f"Bu mövzu deyil.\və\nOnlardan seçin\və{' | '.join(themes)}\in\Mövzuların təsadüfi seçimini əldə etmək üçün 'Təsadüfi' istifadə edin"
     if len(message.command) != 2:
         return await message.reply_text(usage)
     theme = message.text.split(None, 1)[1].strip()
@@ -68,5 +68,5 @@ async def theme_func(_, message):
     else:
         theme = _note["theme"]
     await message.reply_text(
-        f"**{MUSIC_BOT_NAME} Thumbnails Theme**\n\n**Current Theme:-** {theme}\n\n**Available Themes:-** {' | '.join(themes2)} \n\nUse /settheme to change theme."
+        f"**{MUSIC_BOT_NAME} Miniatür Mövzu**\n\n**Cari Mövzu:-** {theme}\n\n**Mövcud Mövzular:-** {' | '.join(themes2)} \n  \nMövzunu dəyişdirmək üçün /settheme istifadə edin."
     )
