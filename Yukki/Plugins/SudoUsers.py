@@ -357,15 +357,15 @@ async def unban_globally(_, message):
         from_user = message.from_user
         sudoers = await get_sudoers()
         if user.id == from_user.id:
-            await message.reply_text("You want to unblock yourself?")
+            await message.reply_text("Özünüzü blokdan çıxarmaq istəyirsiniz?")
         elif user.id == BOT_ID:
-            await message.reply_text("Should i unblock myself?")
+            await message.reply_text("Özümü blokdan çıxarmalıyam?")
         elif user.id in sudoers:
-            await message.reply_text("Sudo users can't be blocked/unblocked.")
+            await message.reply_text("Sudo istifadəçiləri bloklana blokdan çıxarıla bilməz.")
         else:
             is_gbanned = await is_gbanned_user(user.id)
             if not is_gbanned:
-                await message.reply_text("He's already free, why bully him?")
+                await message.reply_text("O, artıq azaddır, niyə onu təhqir edirsiniz?")
             else:
                 await remove_gban_user(user.id)
                 await message.reply_text(f"Ungbanned!")
@@ -375,13 +375,13 @@ async def unban_globally(_, message):
     mention = message.reply_to_message.from_user.mention
     sudoers = await get_sudoers()
     if user_id == from_user_id:
-        await message.reply_text("You want to unblock yourself?")
+        await message.reply_text("Özünüzü blokdan çıxarmaq istəyirsiniz?")
     elif user_id == BOT_ID:
         await message.reply_text(
-            "Should i unblock myself? But i'm not blocked."
-        )
+            "Özümü blokdan çıxarmalıyam? Amma bloklanmamışam."
+         )
     elif user_id in sudoers:
-        await message.reply_text("Sudo users can't be blocked/unblocked.")
+        await message.reply_text("Sudo istifadəçiləri bloklana blokdan çıxarıla bilməz.")
     else:
         is_gbanned = await is_gbanned_user(user_id)
         if not is_gbanned:
@@ -420,12 +420,12 @@ async def broadcast_message_pin_silent(_, message):
             except Exception:
                 pass
         await message.reply_text(
-            f"**Broadcasted Message In {sent}  Chats with {pin} Pins.**"
+            f"**Yayımlanan Mesaj {sent} Çatlarda {pin} Pin ilə.**"
         )
         return
     if len(message.command) < 2:
         await message.reply_text(
-            "**Usage**:\n/broadcast [MESSAGE] or [Reply to a Message]"
+            "**İstifadə**:\n/broadcast [MESSAGE] və ya [Mesajı Cavab]"
         )
         return
     text = message.text.split(None, 1)[1]
