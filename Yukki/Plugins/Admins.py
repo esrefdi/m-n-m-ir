@@ -235,7 +235,7 @@ async def admins(_, message: Message):
                     final_output = await message.reply_photo(
                         photo=thumb,
                         reply_markup=InlineKeyboardMarkup(buttons),
-                        başlıq=(
+                        caption=(
                              f"<b>__Video Çatı Atladı__</b>\n\n🎥<b>__Video Oxumağa Başladı:__ </b> [{title[:25]}](https://www.youtube.com/watch  ?v={videoid}) \n👤**__Tələb:__** {mention}"
                          ),
                      )
@@ -252,17 +252,17 @@ async def admins(_, message: Message):
                     )
             else:
                 mystic = await message.reply_text(
-                    f"**{MUSIC_BOT_NAME} Playlist Function**\n\n__Downloading Next Music From Playlist....__"
-                )
-                (
+                    f"**{MUSIC_BOT_NAME} Pleylist Funksiyası**\n\n__Pleylistdən Növbəti Musiqi Endirilir....__"
+                 )
+                 (
                     title,
                     duration_min,
                     duration_sec,
                     thumbnail,
                 ) = get_yt_info_id(videoid)
                 await mystic.edit(
-                    f"**{MUSIC_BOT_NAME} Downloader**\n\n**Title:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
-                )
+                    f"**{MUSIC_BOT_NAME} Yükləyici**\n\n**Başlıq:** {title[:50]}\n\n0% ▓▓▓▓▓▓▓▓▓▓▓▓ 100%"
+                 )
                 downloaded_file = await loop.run_in_executor(
                     None, download, videoid, mystic, title
                 )
@@ -282,9 +282,9 @@ async def admins(_, message: Message):
                     photo=thumb,
                     reply_markup=InlineKeyboardMarkup(buttons),
                     caption=(
-                        f"<b>__Skipped Voice Chat__</b>\n\n🎥<b>__Started Playing:__ </b>[{title[:25]}](https://www.youtube.com/watch?v={videoid}) \n⏳<b>__Duration:__</b> {duration_min} Mins\n👤**__Requested by:__** {mention}"
-                    ),
-                )
+                         f"<b>__Səsli Söhbət Atlandı__</b>\n\n🎥<b>__Oxumağa başladı:__ </b>[{title[:25]}](https://www.youtube.com/watch?  v={videoid}) \n⏳<b>__Müddət:__</b> {duration_min} Dəq\n👤**__Tələb:__** {mention}"
+                     ),
+                 )
                 os.remove(thumb)
                 await start_timer(
                     videoid,
