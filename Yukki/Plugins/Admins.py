@@ -117,7 +117,7 @@ async def admins(_, message: Message):
             await remove_active_chat(chat_id)
             await remove_active_video_chat(chat_id)
             await message.reply_text(
-                "__Queue__-da daha musiqi yoxdur \n\nSəsli Çatı tərk edirik"
+                "__Növbə__-də daha musiqi yoxdur \n\nSəsli Çatı tərk edirik"
             )
             await stop_stream(chat_id)
             return
@@ -162,7 +162,7 @@ async def admins(_, message: Message):
                 final_output = await message.reply_photo(
                     photo=thumb,
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    caption=f"<b>__Skipped Voice Chat__</b>\n\n🎥<b>__Started Playing:__</b> {title} \n⏳<b>__Duration:__</b> {duration_min} \n👤<b>__Requested by:__ </b> {mention}",
+                    caption=f"<b>__Səsli Söhbət Atlandı__</b>\n\n🎥<b>__Oynamağa başladı:__</b> {title} \n⏳<b>__Müddət:__</b> {duration_min} \  n👤<b>__Tələb:__ </b> {mention}",
                 )
                 await start_timer(
                     videoid,
