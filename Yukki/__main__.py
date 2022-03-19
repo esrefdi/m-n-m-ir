@@ -401,9 +401,9 @@ async def help_button(client, query):
     create_match = re.match(r"help_create", query.data)
     top_text = f"""Hello {query.from_user.first_name},
 
-Click on the buttons for more information.
+Ətraflı məlumat üçün düymələrə klikləyin.
 
-All commands can be used with: /
+ Bütün əmrlər aşağıdakılarla istifadə edilə bilər: /
  """
     if mod_match:
         module = mod_match.group(1)
@@ -417,10 +417,10 @@ All commands can be used with: /
             [
                 [
                     InlineKeyboardButton(
-                        text="↪️ Back", callback_data="help_back"
+                        text="↪️ Geri", callback_data="help_back"
                     ),
                     InlineKeyboardButton(
-                        text="🔄 Close", callback_data="close"
+                        text="🔄 Bağlayın", callback_data="close"
                     ),
                 ],
             ]
