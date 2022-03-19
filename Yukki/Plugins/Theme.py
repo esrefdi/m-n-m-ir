@@ -34,11 +34,11 @@ __HELP__ = """
 
 
 /settheme
-- Set a theme for thumbnails.
+- Miniatürlər üçün mövzu təyin edin.
 
-/theme
-- Check Theme for your chat.
-"""
+ /theme
+ - Söhbətiniz üçün mövzunu yoxlayın.
+ """
 
 
 @app.on_message(
